@@ -11,3 +11,83 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.rec-card-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.rec-card {
+  color:#06425C;
+	border-spacing: 0;
+	border: 1px solid black;
+	-webkit-border-radius: 20px 20px 20px 20px;
+	border-radius: 20px 0px 0px 20px;
+  width: calc(100% - 70px);
+  display: block;
+  position: relative;
+  /* min-height: 300px; */
+}
+
+.card-body {
+  margin-left: 6%;
+  display: block;
+}
+
+.nav {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.5rem 0rem;
+}
+
+.login-page {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
+ border-radius: 6px;
+  align-items: center;
+}
+
+.form label {
+  font-size: 20px;
+  display: block;
+  margin: 10px 10px 10px 10px;
+}
+
+.form input {
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 10px 10px 10px;
+  height: 25px;
+  width: 80%;
+	border-radius: 10px 10px 10px 10px;
+  padding: 7px;
+}
+
+.form button {
+display: inline-block;
+  height: 40px;
+ -webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+  margin: 10px 20px 50px 0;
+  padding: 5px;
+}
+
+.login-page button {
+  display: inline-block;
+  height: 30px;
+  width: 70px;
+ -webkit-border-radius: 20px 20px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
+  text-align: center;
+  padding: 5px;
+  font-size: 16px;
+  margin: 20px 10px 10px 10px;
+
+}
