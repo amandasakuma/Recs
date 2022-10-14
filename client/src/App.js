@@ -2,12 +2,31 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import Homepage from "./Components/Homepage";
 import Header from "./Components/Header";
-import Profile from "./Components/Profile";
 import LoginSignUpPage from "./Components/LoginSignUpPage";
 import CardEditor from "./Components/CardEditor"
+import ProfileNav from "./Components/ProfileNav";
 
 function App() {
   const [posts, setPosts] = useState([])
+  const [user, setUser] = useState("")
+
+  useEffect(() => {
+    let token = localStorage.getItem('token')
+    if(token && !user.username){
+      fetch('/me', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if(data.user){
+          setUser(data.user)
+        }
+      })
+    }
+  }, [])
 
 
   function getPosts(){
@@ -19,12 +38,12 @@ function App() {
 
   return (
     <div className="App">
-    <Header />
+    <Header user={user} setUser={setUser}/>
     <Routes>
       <Route path="/" element={<Homepage posts={posts}/>} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/login" element={<LoginSignUpPage />} />
-      <Route path="/card-editor" element={<CardEditor />} />
+      <Route path="/profile" element={<ProfileNav user={user}/>} />
+      <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
+      <Route path="/card-editor" element={<CardEditor user={user}/>} />
     </Routes>
     </div>
   );
