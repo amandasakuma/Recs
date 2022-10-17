@@ -5,6 +5,10 @@ import Header from "./Components/Header";
 import LoginSignUpPage from "./Components/LoginSignUpPage";
 import CardEditor from "./Components/CardEditor"
 import ProfileNav from "./Components/ProfileNav";
+import Profile from "./Components/Profile"
+import ProfileDrafts from "./Components/ProfileDrafts"
+import ProfileAbout from "./Components/ProfileAbout"
+import ProfilePosts from "./Components/ProfilePosts"
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -37,15 +41,23 @@ function App() {
   useEffect(getPosts, [])
 
   return (
+  <>
     <div className="App">
     <Header user={user} setUser={setUser}/>
     <Routes>
       <Route path="/" element={<Homepage posts={posts}/>} />
-      <Route path="/profile" element={<ProfileNav user={user}/>} />
+      <Route path="/profile" element={<ProfileNav user={user}/>}>
+        <Route index element={<Profile />} />
+        <Route path="posts" element={<ProfilePosts user={user} />} />
+        <Route path="drafts" element={<ProfileDrafts />} />
+        <Route path="about" element={<ProfileAbout user={user}/>} />
+      </Route>
+
       <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
       <Route path="/card-editor" element={<CardEditor user={user}/>} />
     </Routes>
     </div>
+  </>
   );
 }
 

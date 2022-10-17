@@ -7,5 +7,9 @@ class User < ApplicationRecord
     validates :email, presence: true, length: {maximum: 250}, 
         uniqueness: {case_sensitive: false}
     # validates :password, presence: true
+
+    def profile_posts 
+        self.posts.all
+    end 
     
 end

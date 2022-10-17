@@ -47,7 +47,7 @@ export default function CardEditor({user}) {
 
 
   return (
-    <div>CardEditor
+    <div>
       <form className="card-editor" onSubmit={handlePublish}>
             <input 
                 type='text' 
@@ -69,7 +69,7 @@ export default function CardEditor({user}) {
               value={newPost.content}
               onChange={handlePostChange}
             />
-        <button type="submit" onSubmit={handlePublish}>save</button>
+        <button type="submit" onSubmit={handlePublish}>Publish</button>
       </form>
     </div>
   )

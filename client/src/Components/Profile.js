@@ -1,24 +1,21 @@
 import React from 'react'
-import { Routes, Route, NavLink } from "react-router-dom"
-import ProfilePosts from './ProfilePosts'
+import ProfileNav from "./ProfileNav"
+import ProfileDrafts from "./ProfileDrafts"
+import ProfileAbout from "./ProfileAbout"
+import ProfilePosts from "./ProfilePosts"
+import { Link, Route, Routes } from "react-router-dom"
 
-export default function Profile({user}) {
+export default function Profile() {
   return (
-<div className='profile-header'>ProfileNav
-    <h1>{user.username}</h1>
-      <nav className='profile-nav'>
-        {/* <Routes>
-          <Route path="/posts" element={<ProfilePosts />} /> */}
-          {/* <Route path="/profile" element={<ProfileNav user={user}/>} />
-          <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
-          <Route path="/card-editor" element={<CardEditor user={user}/>} /> */}
-        {/* </Routes> */}
-      
-          <NavLink to='/posts'>Posts</NavLink>
-          <NavLink to='/drafts'>Drafts</NavLink>
-          <NavLink to='/about'>About</NavLink>
-      </nav>   
-    <ProfilePosts user={user}/>
-  </div>
+<div>
+Profile
+{/* <Routes>
+      <Route path="/profile" element={<ProfileNav />} />
+        <Route path="posts" element={<ProfilePosts />} />
+        <Route path="drafts" element={<ProfileDrafts />} />
+        <Route path="about" element={<ProfileAbout />} />
+      </Route>
+</Routes> */}
+</div>
   )
 }
