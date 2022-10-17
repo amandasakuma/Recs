@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         render json: {user: @user, token: token}
     end 
 
-#for /me
+#/me
     def show 
         render json: {user: @current_user}
     end 
