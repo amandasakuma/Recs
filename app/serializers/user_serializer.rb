@@ -1,5 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username 
-# :bio, :profile_pic, :email
+  attributes :id, :username, :profile_pic
   has_many :posts
+
+
 end

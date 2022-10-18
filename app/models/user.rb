@@ -9,7 +9,8 @@ class User < ApplicationRecord
     # validates :password, presence: true
 
     def profile_posts 
-        self.posts.all
+        # self.posts.all
+        Post.all.where(user_id: self.id)
     end 
     
 end

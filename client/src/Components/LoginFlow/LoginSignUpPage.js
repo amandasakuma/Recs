@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import { Routes, Route } from "react-router-dom"
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
@@ -9,11 +8,6 @@ export default function LoginSignUpPage({user, setUser}) {
 
   return (
     <div className='login-page'>
-    {/* <Routes>
-      <Route path="/login-form" element={<LoginForm />} />
-      <Route path="/signup-form" element={<SignupForm />} />
-    </Routes> */}
-
         {showLogin ? (
         <div>
             <LoginForm user={user} setUser={setUser} />

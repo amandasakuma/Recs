@@ -37,7 +37,7 @@ export default function SignupForm() {
         }
     });
     setFormData(intialForm);
-    navigate('/login-form')
+    navigate('/login')
   }
 
   return (

@@ -1,20 +1,20 @@
 import React, {useState} from 'react'
-import EditProfile from './EditProfile'
 
-export default function ProfileAbout({user}) {
 
-const {username, bio, email, profile_pic, password} = user
+export default function ProfileAbout({user, handleDelete}) {
+
+const {username, bio, email, profile_pic} = user
 
   let intitialForm= {
     username: username,
     bio: bio,
     email: email,
-    // password: password,
     profile_pic: profile_pic,
   }
 
   const [profileEdits, setProfileEdits] = useState(intitialForm)
   const [showUpdateForm, setShowUpdateForm] = useState(false)
+  const token = localStorage.getItem('token')
 
   const handleEdit = (e) => {
         setProfileEdits({
@@ -33,12 +33,22 @@ const {username, bio, email, profile_pic, password} = user
       method: 'PATCH', 
       body: JSON.stringify(profileEdits),
       headers: {
-        'Content-type': 'application/json'
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
       },
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
       setShowUpdateForm(!showUpdateForm)
+  }
+
+  function handleDelete(){
+    fetch(`/users/${user.id}`, {
+      method: 'DELETE',
+      'Authorization': `Bearer ${token}`
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
   }
 
 
@@ -55,7 +65,6 @@ const {username, bio, email, profile_pic, password} = user
         defaultValue={username}
         onChange={handleEdit}
       />
-
       <label htmlFor="email">Email</label>
       <input
         type="text"
@@ -63,14 +72,6 @@ const {username, bio, email, profile_pic, password} = user
         defaultValue={email}
         onChange={handleEdit}
       />
-
-      {/* <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={handleEdit}
-      /> */}
 
     <label htmlFor="bio">Bio</label>
       <input
@@ -83,7 +84,7 @@ const {username, bio, email, profile_pic, password} = user
       <label htmlFor="profile_pic">Photo</label>
       <input
         type="text"
-        name="photo"
+        name="image"
         defaultValue={profile_pic}
         onChange={handleEdit}
       />
@@ -100,6 +101,7 @@ const {username, bio, email, profile_pic, password} = user
     </div>
   }
   <button onClick={handleEditClick} >Edit Profile</button>
+  <button onClick={handleDelete} >Delete Profile</button>
 
 
 

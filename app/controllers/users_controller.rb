@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :login, :profile, :userPosts, :update]
+    skip_before_action :authorized, only: [:create, :login, :show]
 
 #/signup
     def create 
@@ -9,23 +9,37 @@ class UsersController < ApplicationController
     end 
 
 #/me
-    def show 
+    def profile 
         render json: {user: @current_user}
     end 
 
-    def profile 
-        render json: find_user, status: :ok
-    end 
+#edit profile
+    def update
+        puts "hello #{@current_user}"
+        user = @current_user.update!(update_user_params)
+        render json: user
+    end
 
-#can become user profile pages
-    # def index 
-    #     render json: User.all 
-    # end 
-
+#profile posts
     def userPosts
         posts = @current_user.profile_posts
         render json: posts
     end 
+
+#delete account
+    def destroy
+        @current_user.destroy 
+        head :no_content
+    end 
+
+    def show
+        render json: find_user
+    end 
+
+    def index 
+        render json: User.all
+    end 
+
 
     def login 
         @user = User.find_by(username: params[:username])
@@ -35,20 +49,6 @@ class UsersController < ApplicationController
         end
     end 
 
-    # def update 
-    #     curr_user = logged_in_user
-    #     if curr_user
-    #         curr_user.update!(update_user_params)
-    #         render curr_user
-    #     else
-    #         render json: {error: "User not found"}, status: :not_found
-    #     end
-    # end 
-
-    def update
-        @current_user.update!(update_user_params)
-        render json: @user
-    end
 
     def logout 
         @current_user = nil 
@@ -84,3 +84,13 @@ end
     #         render json: { error: 'failed to create user' }, status: :unprocessable_entity
     #     end
     # end
+
+    # def update 
+    #     curr_user = logged_in_user
+    #     if curr_user
+    #         curr_user.update!(update_user_params)
+    #         render curr_user
+    #     else
+    #         render json: {error: "User not found"}, status: :not_found
+    #     end
+    # end 

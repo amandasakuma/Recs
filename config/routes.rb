@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   resources :posts
 
 
-
   post "/signup", to: "users#create"
   post "/login", to: "users#login"
-  get "/me", to: "users#show"
   post '/logout', to: 'users#logout'
 
 
@@ -15,5 +13,7 @@ Rails.application.routes.draw do
   get '/posts', to: "posts#show"
 
   patch "profile/about", to: "users#update"
-  # get 'users', to: "users#show"
+  get 'profile/:id', to: "users#show"
+  delete 'profile/users/:id', to: "users#destroy"
+
 end

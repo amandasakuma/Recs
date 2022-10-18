@@ -184,7 +184,7 @@ display: inline-block;
 
 
 .profile-header {
-  background-image: url("https://img.freepik.com/free-vector/yellow-background-with-halftone-lines-design_1017-30148.jpg?w=2000");
+  /* background-image: url("https://img.freepik.com/free-vector/yellow-background-with-halftone-lines-design_1017-30148.jpg?w=2000"); */
   position: absolute;
   height: 300px;
   width: 100%;

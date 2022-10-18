@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import Homepage from "./Components/Homepage";
-import Header from "./Components/Header";
-import LoginSignUpPage from "./Components/LoginSignUpPage";
+import Header from "./Components/LoginFlow/Header";
+import LoginSignUpPage from "./Components/LoginFlow/LoginSignUpPage";
 import CardEditor from "./Components/CardEditor"
-import ProfileNav from "./Components/ProfileNav";
-import Profile from "./Components/Profile"
-import ProfileDrafts from "./Components/ProfileDrafts"
-import ProfileAbout from "./Components/ProfileAbout"
-import ProfilePosts from "./Components/ProfilePosts"
+import ProfileNav from "./Components/ProfilePages/ProfileNav";
+import ProfileDrafts from "./Components/ProfilePages/ProfileDrafts"
+import ProfileAbout from "./Components/ProfilePages/ProfileAbout"
+import ProfilePosts from "./Components/ProfilePages/ProfilePosts"
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -17,7 +16,7 @@ function App() {
   useEffect(() => {
     let token = localStorage.getItem('token')
     if(token && !user.username){
-      fetch('/me', {
+      fetch('/profile', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -40,6 +39,8 @@ function App() {
   }
   useEffect(getPosts, [])
 
+
+
   return (
   <>
     <div className="App">
@@ -47,7 +48,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage posts={posts}/>} />
       <Route path="/profile" element={<ProfileNav user={user}/>}>
-        <Route index element={<Profile />} />
+        <Route index element={<ProfilePosts />} />
         <Route path="posts" element={<ProfilePosts user={user} />} />
         <Route path="drafts" element={<ProfileDrafts />} />
         <Route path="about" element={<ProfileAbout user={user}/>} />
