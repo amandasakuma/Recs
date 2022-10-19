@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :likes, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
 
@@ -11,6 +12,13 @@ class Post < ApplicationRecord
     self.created_at.strftime('%b %d %Y %I:%M%p')
   end
 
+  def like_count 
+    self.social_interactions.where(like: true)
+ 
+  end 
 
+  def liked?(user)
+    !!self.likes.find{|like|like.user_id == user.id}
+  end
 
 end

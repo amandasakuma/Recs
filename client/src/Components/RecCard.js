@@ -11,6 +11,7 @@ export default function RecCard({post}) {
             <span>Published On: {post.pretty_time}</span>
             {/* <p>{post.pub_date}</p> */}
             <p id="body" >{post.content}</p>
+            <button>Like</button>
         </div>
     </div>
   )

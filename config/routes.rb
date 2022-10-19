@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :users 
-  resources :posts
+  resources :users  do 
+      member do
+        get :following, :followers
+      end
+    end
 
+  resources :posts
+  resources :likes, only: [:create]
 
   post "/signup", to: "users#create"
   post "/login", to: "users#login"
@@ -11,6 +16,8 @@ Rails.application.routes.draw do
   get "/profile", to: "users#profile"
   get '/profile/posts', to: "users#userPosts"
   get '/posts', to: "posts#show"
+
+  put '/post/:id/like', to: 'posts#like', as: 'like'
 
   patch "profile/about", to: "users#update"
   get 'profile/:id', to: "users#show"

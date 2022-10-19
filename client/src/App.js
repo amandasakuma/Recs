@@ -12,9 +12,9 @@ import ProfilePosts from "./Components/ProfilePages/ProfilePosts"
 function App() {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState("")
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
-    let token = localStorage.getItem('token')
     if(token && !user.username){
       fetch('/profile', {
         headers: {
@@ -39,14 +39,27 @@ function App() {
   }
   useEffect(getPosts, [])
 
-
+  function handleSocial(id){
+    fetch('/social-interactions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({post_id:id, user_id:user.id})
+    })
+      .then((res) => {
+      if (res.ok){
+        res.json().then((data) => console.log('success:', data))
+      }
+    })
+  }
 
   return (
   <>
     <div className="App">
     <Header user={user} setUser={setUser}/>
     <Routes>
-      <Route path="/" element={<Homepage posts={posts}/>} />
+      <Route path="/" element={<Homepage posts={posts} handleSocial= {handleSocial}/>} />
       <Route path="/profile" element={<ProfileNav user={user}/>}>
         <Route index element={<ProfilePosts />} />
         <Route path="posts" element={<ProfilePosts user={user} />} />

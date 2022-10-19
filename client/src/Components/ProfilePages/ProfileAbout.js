@@ -98,15 +98,11 @@ const {username, bio, email, profile_pic} = user
       <h2>{user.username}</h2>
       <p>{user.bio}</p>
       <img src={user.profile_pic} />
+      <p>Followers {user.follower_count}</p>
     </div>
   }
   <button onClick={handleEditClick} >Edit Profile</button>
-  <button onClick={handleDelete} >Delete Profile</button>
-
-
-
-
-  
+  <button onClick={handleDelete} >Delete Profile</button>  
 </>
   )
 }

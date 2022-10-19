@@ -49,10 +49,24 @@ class UsersController < ApplicationController
         end
     end 
 
-
+#note to self: may not need this?
     def logout 
         @current_user = nil 
         head :no_content
+    end 
+
+    def following
+
+        @user = User.find(params[:id])
+        @users = @user.following
+        render json: @users
+
+    end 
+
+    def followers 
+        @user = User.find(params[:id])
+        @users = @user.followers
+        render json: @users
     end 
 
     private     
