@@ -2,21 +2,19 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import Homepage from "./Components/Homepage";
 import Header from "./Components/LoginFlow/Header";
-import LoginSignUpPage from "./Components/LoginFlow/LoginSignUpPage";
 import CardEditor from "./Components/CardEditor"
-import ProfileNav from "./Components/ProfilePages/ProfileNav";
-import ProfileDrafts from "./Components/ProfilePages/ProfileDrafts"
-import ProfileAbout from "./Components/ProfilePages/ProfileAbout"
-import ProfilePosts from "./Components/ProfilePages/ProfilePosts"
+import Profile from "./Components/ProfilePages/Profile";
+import LoginSignUpPage from "./Components/LoginFlow/LoginSignUpPage";
+
 
 function App() {
   const [posts, setPosts] = useState([])
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState('')
   const token = localStorage.getItem('token')
 
   useEffect(() => {
     if(token && !user.username){
-      fetch('/profile', {
+      fetch("/me", {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -39,6 +37,7 @@ function App() {
   }
   useEffect(getPosts, [])
 
+
   function handleSocial(id){
     fetch('/social-interactions', {
       method: 'POST',
@@ -56,20 +55,16 @@ function App() {
 
   return (
   <>
+    
     <div className="App">
     <Header user={user} setUser={setUser}/>
+    
     <Routes>
       <Route path="/" element={<Homepage posts={posts} handleSocial= {handleSocial}/>} />
-      <Route path="/profile" element={<ProfileNav user={user}/>}>
-        <Route index element={<ProfilePosts />} />
-        <Route path="posts" element={<ProfilePosts user={user} />} />
-        <Route path="drafts" element={<ProfileDrafts />} />
-        <Route path="about" element={<ProfileAbout user={user}/>} />
-      </Route>
-
-      <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
       <Route path="/card-editor" element={<CardEditor user={user}/>} />
+      <Route path="/login" element={<LoginSignUpPage setUser={setUser}/>} />
     </Routes>
+<Profile user={user} />
     </div>
   </>
   );

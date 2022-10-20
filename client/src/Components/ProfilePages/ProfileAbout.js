@@ -29,7 +29,7 @@ const {username, bio, email, profile_pic} = user
 
   function handleProfileEdit(e){
     e.preventDefault();
-    fetch('/profile/about', {
+    fetch(`/profile/${username}`, {
       method: 'PATCH', 
       body: JSON.stringify(profileEdits),
       headers: {
@@ -50,7 +50,7 @@ const {username, bio, email, profile_pic} = user
     .then(res => res.json())
     .then(res => console.log(res))
   }
-
+console.log(user.posts)
 
   return (
 <>
@@ -100,6 +100,7 @@ const {username, bio, email, profile_pic} = user
       <img src={user.profile_pic} />
       <p>Followers {user.follower_count}</p>
     </div>
+
   }
   <button onClick={handleEditClick} >Edit Profile</button>
   <button onClick={handleDelete} >Delete Profile</button>  

@@ -10,9 +10,9 @@ export default function ProfileNav({user}) {
     <p>Followers {user.follower_count}</p>
     <p>Following {user.following_count}</p>
       <nav className='profile-nav'>
-          <Link to='/profile/posts'>Posts</Link>
-          <Link to='/profile/drafts'>Drafts</Link>
-          <Link to='/profile/about'>About</Link>
+          <Link to='posts'>Posts</Link>
+          <Link to='drafts'>Drafts</Link>
+          <Link to='about'>About</Link>
           
       </nav>   
 <Outlet />

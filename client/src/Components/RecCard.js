@@ -2,6 +2,11 @@ import React from 'react'
 
 
 export default function RecCard({post}) {
+
+
+
+
+
   return (
     <div className='rec-card'>
         <div className='card-body'>
@@ -12,6 +17,7 @@ export default function RecCard({post}) {
             {/* <p>{post.pub_date}</p> */}
             <p id="body" >{post.content}</p>
             <button>Like</button>
+            <p>{post.like_count} likes</p>
         </div>
     </div>
   )

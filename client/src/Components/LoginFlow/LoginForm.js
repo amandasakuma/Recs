@@ -32,6 +32,7 @@ export default function LoginForm({user, setUser}) {
         setUser(data.user)
         localStorage.setItem('token', data.token)
     })
+      .then(console.log("successfuly login!"))
     .catch(err => console.log(err))
     navigate('/')
   }
