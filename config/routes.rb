@@ -5,22 +5,28 @@ Rails.application.routes.draw do
       end
     end
 
+# scope ':username' do
+#   resources :profiles, only: [:show]
+# end
+
   resources :posts
   resources :likes, only: [:create]
-
+  resources :profiles
   post "/signup", to: "users#create"
   post "/login", to: "users#login"
   post '/logout', to: 'users#logout'
 
 
   get "/profile", to: "users#profile"
-  get '/profile/posts', to: "users#userPosts"
+  get '/profile/:id/posts', to: "users#userPosts"
   get '/posts', to: "posts#show"
+
+
 
   put '/post/:id/like', to: 'posts#like', as: 'like'
 
   patch "profile/about", to: "users#update"
-  get 'profile/:id', to: "users#show"
+  # get 'profiles/:username/', to: "profiles#show"
   delete 'profile/users/:id', to: "users#destroy"
 
 end

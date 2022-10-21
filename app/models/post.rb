@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   end
 
   def like_count 
-    self.social_interactions.where(like: true)
+    self.likes.count
  
   end 
 

@@ -15,6 +15,7 @@ export default function Header({user, setUser}) {
         textDecoration: "none"
     }
 
+
   return (
 <Fragment>
         <nav className='navBar'>
@@ -34,12 +35,12 @@ export default function Header({user, setUser}) {
 
         <div className='menu'>
         <DropdownMenu userName={user.username} position='left' triggerType='image' trigger={logo}>
-            <MenuItem text="Profile" location="/profile"/>
+            <MenuItem text="Profile" location={"/profile/3"}/>
             {/* <MenuItem text="Your Recs" location="/profile/posts"/> */}
             <MenuItem text="Saved Recs" location="/profile"/>
             <MenuItem text="Drafts" location="/profile"/>
             <MenuItem type='separator' />
-            <MenuItem text="Edit Profile" location="/profile/about"/>
+            <MenuItem text="Edit Profile" location={`/profile/${user.username}/about`}/>
             <MenuItem text="Logout" onClick = {handleLogout} />
         </DropdownMenu>
         </div>

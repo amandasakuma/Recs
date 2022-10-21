@@ -1,29 +1,35 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useParams} from 'react'
 import RecCard from '../RecCard'
 
+import ProfileCard from './ProfileCard'
 
-export default function ProfilePosts() {
 
-const [userPosts, setUserPosts] = useState([])
+export default function ProfilePosts({user}) {
+console.log(user)
+const { posts } = user
+console.log(posts)
+//   const {id} = useParams
+// console.log(id)
 
-  function getPosts(){
-    let token = localStorage.getItem('token')
-    fetch("/profile/posts", {
-     headers: {
-        'Authorization': `Bearer ${token}`
-     }
-  })
-    .then((res) => res.json())
-    .then ((data) => setUserPosts(data))
-  }
-  useEffect(getPosts, [])
+// const [userPosts, setUserPosts] = useState([])
+
+//   function getPosts(){
+//     let token = localStorage.getItem('token')
+//     fetch("/profile/posts", {
+//      headers: {
+//         'Authorization': `Bearer ${token}`
+//      }
+//   })
+//     .then((res) => res.json())
+//     .then ((data) => setUserPosts(data))
+//   }
+//   useEffect(getPosts, [])
 
 
   return (
     <div>
-      
-      {userPosts.map((post) => 
-        <RecCard key={post.id} post={post}/>)}
+      {posts.map((post) => 
+        <ProfileCard key={post.id} post={post}/>)}
   </div>
   )
 }

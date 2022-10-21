@@ -8,10 +8,15 @@ class UsersController < ApplicationController
         render json: {user: @user, token: token}
     end 
 
-#/me
+
     def profile 
         render json: {user: @current_user}
     end 
+
+#/me
+    # def show
+    #     render json: logged_in_user
+    # end 
 
 #edit profile
     def update
@@ -22,18 +27,16 @@ class UsersController < ApplicationController
 
 #profile posts
     def userPosts
-        posts = @current_user.profile_posts
+        posts = find_user.profile_posts
         render json: posts
     end 
+
+
 
 #delete account
     def destroy
         @current_user.destroy 
         head :no_content
-    end 
-
-    def show
-        render json: find_user
     end 
 
     def index 
