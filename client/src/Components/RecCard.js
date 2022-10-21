@@ -28,7 +28,7 @@ export default function RecCard({post}) {
      
             <h2>{hed}</h2>
             <p>{dek}</p>
-            <Link to={`/profile/${user.id}`}>
+            <Link to={`/profile/${user.username}`}>
               <span>By: {user.username}</span>
             </Link>
             <span>Published On: {pretty_time}</span>

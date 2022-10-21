@@ -6,8 +6,6 @@ import ProfileAbout from './ProfileAbout'
 
 export default function ProfileNav({user, id}) {
 
-console.log(id)
-
   return (
  <>
 <div className='profile-header'>
@@ -16,8 +14,6 @@ console.log(id)
     <p>Following {user.following_count}</p>
       <nav className='profile-nav'>
           <Link to={`/profile/${id}/posts`}>Posts</Link>
-          {/* <Link to={`/profile/:id/posts`}>Posts</Link> */}
-          {/* <Link to={`/profile/:id/drafts`}>Drafts</Link> */}
           <Link to={`/profile/${id}/about`}>About</Link>
           
       </nav>   

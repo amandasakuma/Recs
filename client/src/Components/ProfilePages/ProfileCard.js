@@ -11,7 +11,6 @@ export default function ProfileCard({post}) {
             <p>{dek}</p>
             <span>By: {author.username}</span>
             <span>Published On: {pretty_time}</span>
-            {/* <p>{post.pub_date}</p> */}
             <p id="body" >{content}</p>
             <button> Like</button>
             <p>{like_count} likes</p>

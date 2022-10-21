@@ -1,9 +1,9 @@
 import React from 'react'
 import { Outlet, Link } from "react-router-dom"
 
-export default function UserProfile({posts}) {
+export default function UserProfile({user}) {
   
-console.log(posts)
+
 return (
 <>
 {/* <div className='profile-header'>

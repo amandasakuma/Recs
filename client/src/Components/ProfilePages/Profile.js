@@ -4,27 +4,51 @@ import ProfileNav from './ProfileNav'
 
 export default function Profile() {
     const [user, setUser] = useState(null)
+    const token = localStorage.getItem('token')
 
-    const {id} = useParams();
-    console.log(id)
+    const params = useParams();
+    console.log(params.username)
 
     function getUser(){
-        fetch(`/profiles/${id}`)
+        if(!token){
+            fetch('/me', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+                }
+            })
             .then((res) => res.json())
             .then((data) => setUser(data))
-
+        } else {
+        fetch(`/showprofiles/${params.username}`)
+            .then((res) => res.json())
+            .then((data) => setUser(data))
+        }
     }
-    useEffect(getUser, [id])
+    
+
+
+
+    // function getUser(){
+    //     if(token && !user.username){
+    //         fetch('/me', {
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     })
+        
+
+    //     fetch(`/showprofiles/${params.username}`)
+    //         .then((res) => res.json())
+    //         .then((data) => setUser(data))
+
+    // }
+    useEffect(getUser, [])
 
     if(!user) { return <div></div>}
-    console.log(user)
-    const {posts} = user
-    console.log(posts)
-
 
   return (
     <div>
-        <ProfileNav id={id} user={user}/>
+        <ProfileNav  user={user}/>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import MenuItem from 'react-bootstrap-dropdown-menu/dist/MenuItem';
 import DropdownMenu from 'react-bootstrap-dropdown-menu/dist/DropdownMenu';
 
 export default function Header({user, setUser}) {
+console.log(user)
 
     const handleLogout = () => {
         setUser("")
@@ -35,12 +36,12 @@ export default function Header({user, setUser}) {
 
         <div className='menu'>
         <DropdownMenu userName={user.username} position='left' triggerType='image' trigger={logo}>
-            <MenuItem text="Profile" location={"/profile/3"}/>
+            <MenuItem text="Profile" location={`/profile/${user.username}`}/>
             {/* <MenuItem text="Your Recs" location="/profile/posts"/> */}
-            <MenuItem text="Saved Recs" location="/profile"/>
-            <MenuItem text="Drafts" location="/profile"/>
+            <MenuItem text="Saved Recs" location="/profile/me/posts"/>
+            {/* <MenuItem text="Drafts" location="/profile"/> */}
             <MenuItem type='separator' />
-            <MenuItem text="Edit Profile" location={`/profile/${user.username}/about`}/>
+            <MenuItem text="Edit Profile" location="/profile/me/about"/>
             <MenuItem text="Logout" onClick = {handleLogout} />
         </DropdownMenu>
         </div>

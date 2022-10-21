@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     end 
 
 
-    def profile 
-        render json: {user: @current_user}
+    def my_profile 
+        render json: @current_user
     end 
 
 #/me

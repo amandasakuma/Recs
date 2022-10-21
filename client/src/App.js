@@ -5,12 +5,8 @@ import Header from "./Components/LoginFlow/Header";
 import LoginSignUpPage from "./Components/LoginFlow/LoginSignUpPage";
 import CardEditor from "./Components/CardEditor"
 import Profile from "./Components/ProfilePages/Profile";
-// import ProfileNav from "./Components/ProfilePages/ProfileNav";
-// import ProfileDrafts from "./Components/ProfilePages/ProfileDrafts"
-// import ProfileAbout from "./Components/ProfilePages/ProfileAbout"
-// import ProfilePosts from "./Components/ProfilePages/ProfilePosts"
-// import UserProfile from "./Components/UserProfileNav";
 import RecCard from "./Components/RecCard";
+import UserProfile from "./Components/UserProfileNav";
 
 
 function App() {
@@ -21,7 +17,7 @@ function App() {
 
   useEffect(() => {
     if(token && !user.username){
-      fetch('/profile', {
+      fetch('/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -29,13 +25,12 @@ function App() {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        if(data.user){
-          setUser(data.user)
+        if(data){
+          setUser(data)
         }
       })
     }
   }, [])
-
 
   function getPosts(){
     fetch("/posts")
@@ -44,31 +39,34 @@ function App() {
   }
   useEffect(getPosts, [])
 
-  function handleSocial(id){
-    fetch('/social-interactions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({post_id:id, user_id:user.id})
-    })
-      .then((res) => {
-      if (res.ok){
-        res.json()
-      .then((data) => console.log('success:', data))
-      }
-    })
-  }
+  // function handleSocial(id){
+  //   fetch('/social-interactions', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`
+  //     },
+  //     body: JSON.stringify({post_id:id, user_id:user.id})
+  //   })
+  //     .then((res) => {
+  //     if (res.ok){
+  //       res.json()
+  //     .then((data) => console.log('success:', data))
+  //     }
+  //   })
+  // }
+console.log(user)
+
 
   return (
   <>
     <div className="App">
     <Header user={user} setUser={setUser}/>    
     <Routes>
-      <Route path="/" element={<Homepage posts={posts} handleSocial= {handleSocial}/>} >
+      <Route path="/" element={<Homepage posts={posts} />} >
       </Route>
       <Route path=":id" element= {<RecCard/>} />
-      <Route path={"/profile/:id/*"} element={<Profile  />} />
+      <Route path={"/profile/:username/*"} element={<Profile />} />
+      <Route path="/profile/me/*" element={<UserProfile user={user}/>} />
       <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
       <Route path="/card-editor" element={<CardEditor user={user}/>} />
     </Routes>
