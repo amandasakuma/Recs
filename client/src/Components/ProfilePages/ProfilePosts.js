@@ -2,7 +2,7 @@ import React from 'react'
 import ProfileCard from './ProfileCard'
 
 
-export default function ProfilePosts({user}) {
+export default function ProfilePosts({user, loggedInUser}) {
 
   const { posts } = user
 
@@ -10,7 +10,7 @@ export default function ProfilePosts({user}) {
   return (
     <div>
       {posts.map((post) => 
-        <ProfileCard key={post.id} user={user} post={post}/>)}
+        <ProfileCard key={post.id} user={user} post={post} loggedInUser={loggedInUser}/>)}
     </div>
   )
 }

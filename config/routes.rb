@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tags
   resources :users  do 
       member do
         get :following, :followers
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
   post '/showlikes', to: 'posts#like', as: 'like'
 
   patch "profile/about", to: "users#update"
+  patch "posts/:id", to: "posts#update"
  
   # delete 'profile/users/:id', to: "users#destroy"
 

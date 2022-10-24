@@ -21,6 +21,12 @@ class PostsController < ApplicationController
         Like.create(user_id: current_user.id, post_id: @post_id)
     end 
 
+    def update 
+        post = Post.find_by(id: params[:id])
+        post.update!(post_params)
+        render json: post
+    end 
+
 
 private 
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Outlet, Routes, Route, } from "react-router-dom"
 import ProfilePosts from './ProfilePosts'
 import ProfileAbout from './ProfileAbout'
+import ProfileCardEditor from './ProfileCardEditor'
 
 
 export default function ProfileNav({user, loggedInUser}) {
@@ -62,8 +63,9 @@ export default function ProfileNav({user, loggedInUser}) {
       </nav>   
 <Outlet />
     <Routes>
-        <Route path="posts" element={<ProfilePosts user={user}/>}/>
+        <Route path="posts" element={<ProfilePosts loggedInUser={loggedInUser} user={user}/>}/>
         <Route path="about" element={<ProfileAbout user={user} loggedInUser={loggedInUser}/>} />
+        {/* <Route path="edit" element={<ProfileCardEditor user={user} loggedInUser={loggedInUser}/>} /> */}
     </Routes>
 </div>
 </> 
