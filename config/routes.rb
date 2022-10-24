@@ -17,21 +17,28 @@ Rails.application.routes.draw do
 
   resources :profiles
 
+
   get "/me", to: "users#my_profile"
   get '/showprofiles/:username', to: "profiles#profile_page"
+
+  get "/likes", to: "likes#index"
+  get "/follows", to: "follows#index"
 
   post "/signup", to: "users#create"
   post "/login", to: "users#login"
   post '/logout', to: 'users#logout'
 
+  post "/create-like", to: "likes#create"
+  post "/create-follow", to: "follows#create"
 
+  delete "/unfollow", to: "follows#destroy"
  
   # get '/profile/:id/posts', to: "users#userPosts"
   get '/posts', to: "posts#show"
 
 
 
-  # put '/post/:id/like', to: 'posts#like', as: 'like'
+  post '/showlikes', to: 'posts#like', as: 'like'
 
   patch "profile/about", to: "users#update"
  

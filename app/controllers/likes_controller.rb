@@ -1,13 +1,15 @@
 class LikesController < ApplicationController
+    
 
-    # def index 
+    def index 
+        render json: Like.all
+    end
 
-    # end
-
-    # def create 
-    #     like = @post.likes.create(user_id: current_user.id)
-    #     render json: like
-    # end 
+    def create
+        post = Post.find(params[:post_id])
+        like = Like.create!(user_id: @current_user.id, post_id: post.id)
+        render json: like
+    end 
 
     def destroy 
         @like = current_user.likes.find(params[:id])

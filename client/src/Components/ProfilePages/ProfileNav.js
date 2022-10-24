@@ -5,11 +5,40 @@ import ProfileAbout from './ProfileAbout'
 
 
 export default function ProfileNav({user, loggedInUser}) {
-    const {following} = loggedInUser
+    const token = localStorage.getItem('token')
+    const follows = loggedInUser.following.find(element => {
+        return element.id === user.id
+    })
 
-    // const followedUsers = () => {
-    //     following.map((id))
-    // }
+    function handleFollow(){
+        fetch('/create-follow', {
+            method: 'POST',
+            headers:  {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json",   
+        },
+        body: JSON.stringify({followed_id:user.id, follower_id:loggedInUser.id})
+        })
+        .then((res) => {
+            if (res.ok){
+                res.json()
+            .then((data) => console.log('success:', data))
+            }
+        })
+    }
+
+    function handleUnFollow(){
+        fetch('/unfollow', {
+            method: 'DELETE',
+            headers:  {
+        'Authorization': `Bearer ${token}`
+        },
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+            alert("Unfollowed user")}
+
+
   return (
  <>
 <div className='profile-header'>
@@ -19,9 +48,12 @@ export default function ProfileNav({user, loggedInUser}) {
         <span>Followers {user.follower_count}</span>
         <span>|</span>
         <span>Following {user.following_count}</span>
-    </div>
-    {/* {following.id === user.id ? <button className='follow-button'>Following</button> : <button className='follow-button'>Follow</button>} */}
-    
+        {follows ? 
+            <button onClick={handleUnFollow}>Yes</button>
+                :
+            <button onClick={handleFollow} >Follow</button>
+        }
+    </div>    
     
       <nav className='profile-nav'>
           <Link to={`/profile/${user.username}/posts`}>Posts</Link>
