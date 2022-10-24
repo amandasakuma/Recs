@@ -3,31 +3,31 @@ import { useParams } from "react-router-dom"
 import ProfileNav from './ProfileNav'
 
 export default function Profile({loggedInUser}) {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState("")
     const token = localStorage.getItem('token')
 
     const params = useParams();
     console.log(params.username)
 
-    function getUser(){
-            if(!loggedInUser){
+    useEffect(() => {
+        if(loggedInUser.username == params.username){
             fetch('/me', {
-            headers: {
-                'Authorization': `Bearer ${token}`
+                headers: {
+                    'Authorization': `Bearer ${token}`
                 }
             })
             .then((res) => res.json())
             .then((data) => setUser(data))
         } else {
-        fetch(`/showprofiles/${params.username}`)
-            .then((res) => res.json())
-            .then((data) => setUser(data))
-        }
-    }
-    
-    useEffect(getUser, [])
+            fetch(`/showprofiles/${params.username}`)
+                .then((res) => res.json())
+                .then((data) => setUser(data))
+        }   
+    }, [])
+
 
     if(!user) { return <div></div>}
+
 
   return (
     <div>

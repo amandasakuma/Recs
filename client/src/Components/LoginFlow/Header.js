@@ -1,11 +1,15 @@
 import React, {Fragment} from 'react'
-import {  NavLink } from "react-router-dom"
+import {  NavLink, useParams } from "react-router-dom"
 import logo from './logo.png'
 import MenuItem from 'react-bootstrap-dropdown-menu/dist/MenuItem';
 import DropdownMenu from 'react-bootstrap-dropdown-menu/dist/DropdownMenu';
 
 export default function Header({user, setUser}) {
 console.log(user)
+
+
+    const params = useParams();
+    console.log(params)
 
     const handleLogout = () => {
         setUser("")

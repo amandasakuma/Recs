@@ -51,7 +51,7 @@ export default function ProfileAbout({user, loggedInUser}) {
     .then(res => res.json())
     .then(res => console.log(res))
   }
-
+  if(!user) { return <div></div>}
 
   return (
 <>

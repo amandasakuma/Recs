@@ -5,7 +5,7 @@ export default function RecCard({post, loggedInUser}) {
 
 
 
-  const {hed, dek, pretty_time, content, like_count, user, liked} = post
+  const {hed, dek, pretty_time, content, like_count, user} = post
 
 
   // function mappedLikes(){ 
@@ -16,19 +16,16 @@ export default function RecCard({post, loggedInUser}) {
   //       } else {
   //         return null
   //       }
-  //     })
   //  console.log(newarray)
   //   }
 
-  const loggedInUserLiked = post.likes.map((like) => {
-      if(like.user_id === loggedInUser.id){
-        return <button>Liked by {loggedInUser.username}</button>
-      } else {
-        return null
-      }
+
+
+    const liked = post.likes.find(element => {
+      return element.user_id === loggedInUser.id
   })
 
- 
+
     // useEffect(mappedLikes, [])
 
   // function handleLike(id){
@@ -70,7 +67,7 @@ export default function RecCard({post, loggedInUser}) {
 //    return element.user_id === loggedInUser.id 
 //   })
 
-// console.log(userLiked)
+// console.log(userLiked) 
 
   return (
     <div className='rec-card'>
@@ -84,11 +81,28 @@ export default function RecCard({post, loggedInUser}) {
             </Link>
             <span>Published On: {pretty_time}</span>
             {/* <p>{post.pub_date}</p> */}
-            <p id="body" >{content}</p>
-            <button> Like</button>
-            <p>{loggedInUserLiked}</p>
+            {/* <p id="body" >{content}</p>
+            <button> {
+              loggedInUserLiked ? "Liked" : "like"
+
+
+            }</button> */}
+ 
+            {/* <button>{!loggedInUserLiked ? "Liked": "Like"}</button> */}
             {/* {liked ? <p>{loggedInUser.username} likes</p> : null}
             <p>liked? </p> */}
+            {/* <button>
+                {post.likes.map((like) => {
+                  if(like.user_id === loggedInUser.id){
+                    return "Liked"
+                  } else {
+                    return "Like"
+                  } 
+                })
+              }
+
+            </button> */}
+            <button>{liked ? "Co-signed" : "like"}</button>
         </div>
     </div>
   )

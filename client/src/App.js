@@ -41,9 +41,6 @@ function App() {
   }
   useEffect(getPosts, [])
 
-
-console.log(user)
-
     let location = useLocation();
 
     useEffect(() => {
@@ -60,7 +57,8 @@ console.log(user)
       <Route path="/" element={<Homepage posts={posts} loggedInUser={loggedInUser}/>} >
       </Route>
       <Route path=":id" element= {<RecCard/>} />
-      <Route path={"/profile/:username/*"} element={<Profile loggedInUser={loggedInUser}/>} />
+      <Route path="/header" element= {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null} />
+      <Route path={"/profile/:username/*"} element={<Profile posts={posts} loggedInUser={loggedInUser}/>} />
       <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
       <Route path="/card-editor" element={<CardEditor user={user}/>} />
     </Routes>
