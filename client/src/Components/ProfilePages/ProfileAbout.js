@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 
 
-export default function ProfileAbout({user, handleDelete}) {
+export default function ProfileAbout({user, loggedInUser}) {
 
-const {username, bio, email, profile_pic} = user
+
+  const {username, bio, email, profile_pic} = user
 
   let intitialForm= {
     username: username,
@@ -81,10 +82,10 @@ const {username, bio, email, profile_pic} = user
         onChange={handleEdit}
       />
 
-      <label htmlFor="profile_pic">Photo</label>
+    <label htmlFor="avatar">Avatar</label>
       <input
         type="text"
-        name="image"
+        name="profile_pic"
         defaultValue={profile_pic}
         onChange={handleEdit}
       />
@@ -101,8 +102,14 @@ const {username, bio, email, profile_pic} = user
       <p>Followers {user.follower_count}</p>
     </div>
   }
-  <button onClick={handleEditClick} >Edit Profile</button>
-  <button onClick={handleDelete} >Delete Profile</button>  
+
+  {loggedInUser.id === user.id ?
+  <>
+    <button onClick={handleEditClick} >Edit Profile</button>
+    <button onClick={handleDelete} >Delete Profile</button> 
+  </>
+    : null}
+ 
 </>
   )
 }

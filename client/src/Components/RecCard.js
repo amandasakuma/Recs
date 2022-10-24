@@ -1,26 +1,76 @@
 import React, {useState, useEffect, useParams} from 'react'
 import {Link } from "react-router-dom"
 
-export default function RecCard({post}) {
-  const [selectUser, setSelectUser] = useState("")
+export default function RecCard({post, loggedInUser}) {
 
-  const {hed, dek, pretty_time, content, like_count, user} = post
-  // function getUserProfile(){
-  //   fetch(`/profiles${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setSelectUser(data))
+
+
+  const {hed, dek, pretty_time, content, like_count, user, liked} = post
+
+
+  // function mappedLikes(){ 
+  //     let newarray = post.likes.map((like) => {
+  //       console.log(`${post.hed} is liked by ${like.user_id}`)
+  //       if (like.user_id === loggedInUser.id){
+  //         return {...post, liked: true}
+  //       } else {
+  //         return null
+  //       }
+  //     })
+  //  console.log(newarray)
+  //   }
+
+  const loggedInUserLiked = post.likes.map((like) => {
+      if(like.user_id === loggedInUser.id){
+        return <button>Liked by {loggedInUser.username}</button>
+      } else {
+        return null
+      }
+  })
+
+ 
+    // useEffect(mappedLikes, [])
+
+  // function handleLike(id){
+  //   fetch('/likes', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`
+  //     },
+  //     body: JSON.stringify({post_id:id, user_id:user.id})
+  //   })
+  //     .then((res) => {
+  //     if (res.ok){
+  //       res.json()
+  //     .then((data) => console.log('success:', data))
+  //     }
+  //   })
   // }
 
-  // const { id } = useParams();
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:4000/projects/${id}`)
-  //     .then((r) => r.json())
-  //     .then((project) => {
-  //       setProject(project);
-  //     });
-  // }, [id]);
+ 
+//   let loggedInUserLiked = post.likes.map(like => {
+//     if (loggedInUser.id === like.user_id) {
+//     console.log("true")
+//   } else {
+//     console.log("false")
+//   }
+// }) 
+// console.log(loggedInUserLiked)
 
+// console.log(
+
+// let likeCheck = post.likes.map((like) => {
+//     return loggedInUser.id === like.user_id
+//   }))
+
+
+
+// let userLiked = likes.find(element => {
+//    return element.user_id === loggedInUser.id 
+//   })
+
+// console.log(userLiked)
 
   return (
     <div className='rec-card'>
@@ -29,13 +79,16 @@ export default function RecCard({post}) {
             <h2>{hed}</h2>
             <p>{dek}</p>
             <Link to={`/profile/${user.username}`}>
-              <span>By: {user.username}</span>
+              <img className="avatar" src={user.profile_pic} />
+              <span>  {user.username}</span>
             </Link>
             <span>Published On: {pretty_time}</span>
             {/* <p>{post.pub_date}</p> */}
             <p id="body" >{content}</p>
             <button> Like</button>
-            <p>{like_count} likes</p>
+            <p>{loggedInUserLiked}</p>
+            {/* {liked ? <p>{loggedInUser.username} likes</p> : null}
+            <p>liked? </p> */}
         </div>
     </div>
   )

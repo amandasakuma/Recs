@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from "react-router-dom"
 import ProfileNav from './ProfileNav'
 
-export default function Profile() {
+export default function Profile({loggedInUser}) {
     const [user, setUser] = useState(null)
     const token = localStorage.getItem('token')
 
@@ -10,7 +10,7 @@ export default function Profile() {
     console.log(params.username)
 
     function getUser(){
-        if(!token){
+            if(!loggedInUser){
             fetch('/me', {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -25,30 +25,13 @@ export default function Profile() {
         }
     }
     
-
-
-
-    // function getUser(){
-    //     if(token && !user.username){
-    //         fetch('/me', {
-    //         headers: {
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     })
-        
-
-    //     fetch(`/showprofiles/${params.username}`)
-    //         .then((res) => res.json())
-    //         .then((data) => setUser(data))
-
-    // }
     useEffect(getUser, [])
 
     if(!user) { return <div></div>}
 
   return (
     <div>
-        <ProfileNav  user={user}/>
+        <ProfileNav loggedInUser={loggedInUser} user={user}/>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :login, :show]
+    skip_before_action :authorized, only: [:create, :login, :show, :index]
 
 #/signup
     def create 

@@ -4,23 +4,34 @@ import ProfilePosts from './ProfilePosts'
 import ProfileAbout from './ProfileAbout'
 
 
-export default function ProfileNav({user, id}) {
+export default function ProfileNav({user, loggedInUser}) {
+    const {following} = loggedInUser
 
+    // const followedUsers = () => {
+    //     following.map((id))
+    // }
   return (
  <>
 <div className='profile-header'>
+    <img className="profile-avatar" src={user.profile_pic} />
     <h1>{user.username}</h1>
-    <p>Followers {user.follower_count}</p>
-    <p>Following {user.following_count}</p>
+    <div className='profile-follows'>
+        <span>Followers {user.follower_count}</span>
+        <span>|</span>
+        <span>Following {user.following_count}</span>
+    </div>
+    {/* {following.id === user.id ? <button className='follow-button'>Following</button> : <button className='follow-button'>Follow</button>} */}
+    
+    
       <nav className='profile-nav'>
-          <Link to={`/profile/${id}/posts`}>Posts</Link>
-          <Link to={`/profile/${id}/about`}>About</Link>
+          <Link to={`/profile/${user.username}/posts`}>Posts</Link>
+          <Link to={`/profile/${user.username}/about`}>About</Link>
           
       </nav>   
 <Outlet />
     <Routes>
         <Route path="posts" element={<ProfilePosts user={user}/>}/>
-        <Route path="about" element={<ProfileAbout user={user}/>} />
+        <Route path="about" element={<ProfileAbout user={user} loggedInUser={loggedInUser}/>} />
     </Routes>
 </div>
 </> 

@@ -6,10 +6,11 @@ export default function ProfilePosts({user}) {
 
   const { posts } = user
 
+
   return (
     <div>
       {posts.map((post) => 
-        <ProfileCard key={post.id} post={post}/>)}
+        <ProfileCard key={post.id} user={user} post={post}/>)}
     </div>
   )
 }

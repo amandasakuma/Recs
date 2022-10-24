@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
     def profile_page 
         render json: User.find_by!(username: params[:username])
     end 
+
 #profile posts
     def userPosts
         posts = @current_user.profile_posts

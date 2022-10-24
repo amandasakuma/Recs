@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
 
     def index 
+        user = @current_user
         render json: Post.all, status: :ok
     end
 
@@ -15,6 +16,11 @@ class PostsController < ApplicationController
         render json: post
     end 
 
+    def like 
+        @post = Post.all.find(params[:id])
+        Like.create(user_id: current_user.id, post_id: @post_id)
+    end 
+
 
 private 
 
@@ -25,6 +31,14 @@ private
     def find_post
         Post.find_by!(id: params[:id])
     end 
+
+    #   def liked?(current_user)
+
+    #   !!Post.likes.find{|like|like.user_id == current_user.id}
+ 
+    #  end
+
+
 
 
 end

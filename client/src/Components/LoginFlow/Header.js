@@ -1,5 +1,5 @@
-import React, {Fragment, useState} from 'react'
-import { Routes, Route, NavLink, Link, useNavigate } from "react-router-dom"
+import React, {Fragment} from 'react'
+import {  NavLink } from "react-router-dom"
 import logo from './logo.png'
 import MenuItem from 'react-bootstrap-dropdown-menu/dist/MenuItem';
 import DropdownMenu from 'react-bootstrap-dropdown-menu/dist/DropdownMenu';
@@ -16,40 +16,38 @@ console.log(user)
         textDecoration: "none"
     }
 
-
   return (
-<Fragment>
+    <Fragment>  
         <nav className='navBar'>
             <img className="nav-logo" src={logo} />
-            <NavLink id="nav-recs" to="/" >Recs</NavLink>
 
-            <NavLink id="nav-editor"
-                to="/card-editor"
-                style={({isActive}) => 
+            <NavLink id="nav-recs" to="/" > Recs </NavLink>
+
+            <NavLink id="nav-editor" to="/card-editor"
+                    style={({isActive}) => 
                     isActive ? activeStyle : null}
             > <button className='nav-button'>Create</button>
             </NavLink>
+
+
+
 
             {!user ? 
             <NavLink id="nav-login" to="/login">Login</NavLink>
             :  
 
-        <div className='menu'>
-        <DropdownMenu userName={user.username} position='left' triggerType='image' trigger={logo}>
-            <MenuItem text="Profile" location={`/profile/${user.username}`}/>
-            {/* <MenuItem text="Your Recs" location="/profile/posts"/> */}
-            <MenuItem text="Saved Recs" location="/profile/me/posts"/>
-            {/* <MenuItem text="Drafts" location="/profile"/> */}
-            <MenuItem type='separator' />
-            <MenuItem text="Edit Profile" location="/profile/me/about"/>
-            <MenuItem text="Logout" onClick = {handleLogout} />
-        </DropdownMenu>
-        </div>
-}
-
-        </nav>
- 
-            
+            <div className='menu'>
+                <DropdownMenu userName={user.username} position='left' triggerType='image' trigger={user.profile_pic}>
+                    <MenuItem text="Profile" location={`/profile/${user.username}`}/>
+                    <MenuItem text="Your Recs" location={`/profile/${user.username}/posts`}/>
+                    <MenuItem text="Saved Recs" location="/profile/me/posts"/>
+                    <MenuItem type='separator' />
+                    <MenuItem text="Edit Profile" location={`/profile/${user.username}/about`}/>
+                    <MenuItem text="Logout" onClick = {handleLogout} />
+                </DropdownMenu>
+            </div>
+            }
+        </nav>         
    </Fragment>    
   )
 }

@@ -17,8 +17,10 @@ class Post < ApplicationRecord
  
   end 
 
-  def liked?(user)
-    !!self.likes.find{|like|like.user_id == user.id}
+  def liked()
+      !!self.likes.find{|like|like.user_id == user.id}
   end
+
+
 
 end

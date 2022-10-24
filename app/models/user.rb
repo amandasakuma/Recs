@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     before_save { self.email = email.downcase }
     has_secure_password
-    has_many :likes
+    has_many :likes, dependent: :destroy
     has_many :posts, dependent: :destroy
     has_many :active_follows, class_name: "Follow", 
                             foreign_key: "follower_id",
@@ -24,6 +24,8 @@ class User < ApplicationRecord
         # self.posts.all
         Post.all.where(user_id: self.id)
     end 
+
+
 
     def following_count
         self.following.count

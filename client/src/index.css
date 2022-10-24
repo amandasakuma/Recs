@@ -33,6 +33,14 @@ code {
   /* min-height: 300px; */
   padding: 10px;
 }
+
+.avatar {
+  height: 35px;
+  margin-right: 10px;
+  border: .5px solid gray;
+  border-radius: 50%;
+}
+
 .card-body h1 {
   font-size: 26px;
   margin-top: 10px;
@@ -108,6 +116,8 @@ code {
   position: relative;
   margin: 5px 140px 50px 0;
 }
+
+
 
 .nav-logout {
   /* margin: 0 20px 50px 0; */
@@ -191,9 +201,32 @@ display: inline-block;
 }
 
 .profile-header h1 {
-  margin: 130px 0 0 60px;
+  margin: 130px 0 0 25%;
   position: absolute;
   font-size: 70px;
+}
+
+.profile-avatar {
+  margin: 120px 0 0 10%;
+  border: .5px solid gray;
+  border-radius: 50%;
+  width: 90px;
+  position: absolute;
+}
+
+.profile-follows {
+  margin: 220px 0 0 25%;
+  position: absolute;
+  font-size: 15px;
+}
+
+.profile-follows span {
+  padding: 10px; 
+}
+
+.follow-button {
+  margin: 180px 0 0 70%;
+  position: absolute;
 }
 
 .card-editor input {
