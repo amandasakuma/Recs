@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Link } from "react-router-dom"
+import Microlink from '@microlink/react'
 
 export default function ProfileCard({post, user, loggedInUser}) {
   const {hed, dek, pretty_time, content, like_count, id} = post
@@ -53,6 +54,7 @@ export default function ProfileCard({post, user, loggedInUser}) {
             <span>By: {user.username}</span>
             <span>Published On: {pretty_time}</span>
             <p id="body" >{content}</p>
+            {/* <Microlink url='https://www.yelp.com/biz/boat-bar-brooklyn?osq=boat+bar' size='large'/> */}
             <button> Like</button>
             <p>{like_count} likes</p>
             {loggedInUser.id === user.id ?

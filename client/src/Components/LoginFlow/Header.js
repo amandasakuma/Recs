@@ -1,12 +1,24 @@
 import React, {Fragment} from 'react'
 import {  NavLink, useParams } from "react-router-dom"
 import logo from './logo.png'
+// import { Dropdown, Image } from 'semantic-ui-react'
+
 import MenuItem from 'react-bootstrap-dropdown-menu/dist/MenuItem';
 import DropdownMenu from 'react-bootstrap-dropdown-menu/dist/DropdownMenu';
 
 export default function Header({user, setUser}) {
 console.log(user)
 
+    // const trigger = (
+    //     <span>
+    //         <Image avatar src={user.profile_pic} /> {user.username}
+    //     </span>
+// )
+//     const options = [
+//         { key: 'user', text: 'Account', icon: 'user' },
+//         { key: 'settings', text: 'Settings', icon: 'settings' },
+//         { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
+//         ]
 
     const params = useParams();
     console.log(params)
@@ -32,9 +44,8 @@ console.log(user)
                     isActive ? activeStyle : null}
             > <button className='nav-button'>Create</button>
             </NavLink>
-
-
-
+            
+             {/* <NavLink id="nav-login" to="/login">Login</NavLink> */}
 
             {!user ? 
             <NavLink id="nav-login" to="/login">Login</NavLink>

@@ -41,29 +41,32 @@ export default function SignupForm() {
   }
 
   return (
-    <form className="form" onSubmit={handleSignup}>
+    <form className="login-form" onSubmit={handleSignup}>
       {/* <img className="login-logo" src={logo} /> */}
       <h2>Recs</h2>
-        <label> Username </label>
+        {/* <label> Username </label> */}
             <input 
                 type='text' 
-                name='username' 
+                name='username'
+                placeholder='Username'
                 value={formData.username} 
                 onChange={handleChange} 
             />
 
-            <label> Email </label>
+            {/* <label> Email </label> */}
             <input 
                 type='text' 
                 name='email' 
+                placeholder='Email'
                 value={formData.email} 
                 onChange={handleChange} 
             />
       
-            <label> Password </label>
+            {/* <label> Password </label> */}
             <input 
                 type='password' 
                 name='password' 
+                placeholder='Password'
                 value={formData.password} 
                 onChange={handleChange} 
             />

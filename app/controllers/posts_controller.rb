@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 private 
 
     def post_params 
-        params.permit(:hed, :dek, :content, :draft, :pub_date, :user_id)
+        params.permit(:hed, :dek, :content, :draft, :pub_date, :user_id, :photo, :link)
     end
 
     def find_post

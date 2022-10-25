@@ -11,21 +11,21 @@ export default function LoginSignUpPage({user, setUser}) {
         {showLogin ? (
         <div>
             <LoginForm user={user} setUser={setUser} />
-            <p>
+            <p className="signup">
                 Don't have an account? 
-                <button onClick={() => setShowLogin(false)}>
+                <p className="signup-button" onClick={() => setShowLogin(false)}>
                     Sign up
-                </button>
+                </p>
             </p>
         </div>
         ) : (
-            <div>
+            <div >
                 <SignupForm user={user} setUser={setUser} />
-                <p>
+                <p className="signup">
                     Already have an account?
-                    <button onClick={() => setShowLogin(true)}>
+                    <p className="signup-button" onClick={() => setShowLogin(true)}>
                     Sign in
-                    </button>
+                    </p>
                 </p>
             </div>
         )}

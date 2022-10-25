@@ -1,8 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Fjalla One', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,32 +18,47 @@ code {
 
 .rec-card-container {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .rec-card {
-  color:#06425C;
 	border-spacing: 0;
 	border: .5px solid gray;
-	-webkit-border-radius: 20px 20px 20px 20px;
-	border-radius: 10px 10px 10px 10px;
   width: calc(100% - 70px);
   display: block;
   position: relative;
-  margin: 20px;
-  /* min-height: 300px; */
+  margin: 40px;
   padding: 10px;
+  border: 2px solid;
+  box-shadow: 10px 10px 1px #ffa580, 10px 10px 1px 2px rgba(0,0,0,1);
+}
+.card-cosign{
+  margin-bottom: 0;
+  float: right;
+}
+.card-cosign button {
+  display: block;
+  margin: 0 auto;
+  line-height: 28px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1)
 }
 
 .avatar {
-  height: 35px;
+  height: 30px;
   margin-right: 10px;
   border: .5px solid gray;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 
-.card-body h1 {
+.card-body h2 {
+  font-family: 'Fjalla One';
   font-size: 26px;
   margin-top: 10px;
   /* margin-bottom: 5px; */
@@ -57,7 +74,7 @@ code {
 }
 
 #body {
-  font-size: 20px;
+  font-size: 16px;
   margin-top: 20px;
   display: block;
   width: 90%;
@@ -98,7 +115,7 @@ code {
   float: none;
   position: absolute;
   left: 45%;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 #nav-login {
@@ -106,6 +123,7 @@ code {
   text-decoration: none;
   margin: 5px 5%
 }
+
 .menu {
   float: right;
   margin: 0 5% 20px 0;
@@ -117,8 +135,6 @@ code {
   margin: 5px 140px 50px 0;
 }
 
-
-
 .nav-logout {
   /* margin: 0 20px 50px 0; */
   float: right;
@@ -126,51 +142,97 @@ code {
 }
 
 .nav-button {
-  height: 30px;
- -webkit-border-radius: 5px 5px 5px 5px;
-	border-radius: 5px 5px 5px 5px;
-  border-color: lightslategray;
-	border: .5px solid gray;
-  /* display: inline-block; */
+  display: block;
+  margin: 0 auto;
+  margin-top: -12px;
+  line-height: 28px;
+  /* background: #ffa580; */
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1)
 }
 
 .login-page {
   max-width: 500px;
   margin: 40px auto;
-  padding: 16px;
+  padding: 50px 100px;
   box-sizing: border-box;
-  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
-    0 0 0 1px rgb(10 10 10 / 2%);
- border-radius: 6px;
+  border: 2px solid rgba(0,0,0,1);
+  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0,0,0,1);
   align-items: center;
 }
 
-.form label {
+
+.login-form label {
+  font-family: 'Fjalla One';
   font-size: 20px;
   display: block;
   margin: 10px 10px 10px 10px;
 }
 
-.form input {
+.login-form input {
+  font-size: 18px;
+  font-family: 'Fjalla One';
+  display: block;
+  line-height: 28px;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  border: none;
+  border-bottom: 5px solid rgba(0,0,0,1);
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
+  color: rgba(0,0,0,1)
+}
+
+.login-form input:focus{
+  border-bottom: 5px solid #ffa580
+}
+
+.login-form button {
+  display: block;
+  margin: 0 auto;
+  line-height: 28px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1)
+}
+.login-form button:hover{
+    background: rgba(0,0,0,1);
+    color: white;
+    border: 1px solid rgba(0,0,0,1)
+}
+
+.login-form button:selection{
+  background-color: #ffc8ff;
+}
+
+.signup {
+  font-size: 14px;
+  margin-top: 50px;
+  color: #95a4ff;
+}
+
+.signup-button {
   display: inline-block;
-  font-size: 16px;
-  margin: 0 10px 10px 10px;
-  height: 25px;
-  width: 80%;
-	border-radius: 10px 10px 10px 10px;
-  padding: 7px;
+  margin-left: 10px;
+  color: black;
+  font-style: bold;
 }
 
-.form button {
-display: inline-block;
-  height: 40px;
- -webkit-border-radius: 10px 10px 10px 10px;
-	border-radius: 10px 10px 10px 10px;
-  margin: 10px 20px 50px 0;
-  padding: 5px;
+
+.signup-button:hover{
+  cursor: pointer;
+  color: #ffc8ff;
 }
 
-.login-page button {
+/* .login-page button {
   display: inline-block;
   height: 30px;
   width: 70px;
@@ -180,7 +242,7 @@ display: inline-block;
   padding: 5px;
   font-size: 16px;
   margin: 20px 10px 10px 10px;
-}
+} */
 
 .profile-nav {
   height: 40px;
@@ -202,20 +264,22 @@ display: inline-block;
 
 .profile-header h1 {
   margin: 130px 0 0 25%;
+  font-family: 'Fjalla One';
   position: absolute;
   font-size: 70px;
 }
 
 .profile-avatar {
   margin: 120px 0 0 10%;
-  border: .5px solid gray;
-  border-radius: 50%;
-  width: 90px;
+  /* border: .5px solid gray; */
+  height: 40%;
   position: absolute;
+  border-radius: 50%;
+  overflow: "hidden"
 }
 
 .profile-follows {
-  margin: 220px 0 0 25%;
+  margin: 220px 0 0px 25%;
   position: absolute;
   font-size: 15px;
 }
@@ -224,30 +288,63 @@ display: inline-block;
   padding: 10px; 
 }
 
-.follow-button {
-  margin: 180px 0 0 70%;
-  position: absolute;
+.follow-button{
+  float: right;
+  line-height: 28px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1);
+  margin: 200px 20% 0 0;
+  /* position: absolute; */
 }
 
 .card-editor input {
-  display: inline-block;
   font-size: 16px;
   margin: 0 10px 10px 10%;
-  height: 25px;
+  height: 32px;
   width: 80%;
-	/* border-radius: 10px 10px 10px 10px; */
-  padding: 7px;
+  font-family: 'Fjalla One';
+  display: block;
+  line-height: 32px;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
+}
+.card-editor input:focus{
+  border-bottom: 5px solid #ffa580
+}
+
+.card-editor textarea:focus{
+border-bottom: 5px solid #ffa580
 }
 
 .card-editor button {
   display: block;
-  height: 40px;
- -webkit-border-radius: 10px 10px 10px 10px;
-	border-radius: 10px 10px 10px 10px;
-  margin: 10px 20px 50px 10%;
-  padding: 5px;
+  margin: 0 auto;
+  line-height: 28px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1)
+}
+.card-editor button:hover{
+    background: rgba(0,0,0,1);
+    color: white;
+    border: 1px solid rgba(0,0,0,1)
 }
 
+.card-editor button:selection{
+  background-color: #ffc8ff;
+}
 #card-editor-body {
   height: 200px;
   margin-top: 0;
@@ -255,4 +352,64 @@ display: inline-block;
   padding: 7px;
   margin: 0 10px 10px 10%;
   align-items: center;
+}
+
+.profile-about{
+  display: block;
+  margin-left: 10%;
+  /* width: 100%; */
+  align-items: center;
+  /* align-content: center; */
+  /* float: none; */
+}
+
+.profile-form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 50px 100px;
+  box-sizing: border-box;
+  /* border: 2px solid rgba(0,0,0,1); */
+  /* box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0,0,0,1); */
+  align-items: center;
+}
+
+.profile-form input {
+  font-size: 18px;
+  font-family: 'Fjalla One';
+  display: block;
+  line-height: 28px;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  border: none;
+  border-bottom: 5px solid rgba(0,0,0,1);
+  min-width: 350px;
+  padding-left: 5px;
+  outline: none;
+  color: rgba(0,0,0,1)
+
+}
+
+.profile-form button {
+  display: block;
+  margin: 0 auto;
+  line-height: 28px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1)
+}
+.edit-profile-button {
+  display: block;
+  margin: 0 auto;
+  line-height: 28px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1)
 }

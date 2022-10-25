@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useParams} from 'react'
 import {Link } from "react-router-dom"
 
+
 export default function RecCard({post, loggedInUser}) {
   const token = localStorage.getItem('token')
   const {hed, dek, pretty_time, content, like_count, user} = post
@@ -30,21 +31,24 @@ export default function RecCard({post, loggedInUser}) {
   return (
     <div className='rec-card'>
         <div className='card-body'>
+      <div className='card-cosign'>
+              {liked ? 
+                  <button>Co-signed</button>
+                  :
+                  <button onClick={handleLike}>Co-sign</button>
+                }
+              <p>{like_count}</p>
+            </div>  
+            <h2 id="card-hed">{hed}</h2>
      
-            <h2>{hed}</h2>
             <p>{dek}</p>
             <Link to={`/profile/${user.username}`}>
               <img className="avatar" src={user.profile_pic} />
-              <span>  {user.username}</span>
+              <span>{user.username}</span>
             </Link>
-            <span>Published On: {pretty_time}</span>
             <p id="body" >{content}</p>
-            {liked ? 
-                <button>Co-signed</button>
-                :
-                <button onClick={handleLike}>Co-sign</button>
-              }
-            <p>{like_count}</p>
+            <span>{pretty_time}</span>  
+      
         </div>
     </div>
   )

@@ -9,6 +9,7 @@ import RecCard from "./Components/RecCard";
 
 
 
+
 function App() {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState("")
@@ -49,6 +50,7 @@ function App() {
 
   return (
   <>
+
     <div className="App">
 
     {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null}
@@ -61,6 +63,7 @@ function App() {
       <Route path={"/profile/:username/*"} element={<Profile posts={posts} loggedInUser={loggedInUser}/>} />
       <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
       <Route path="/card-editor" element={<CardEditor user={user}/>} />
+   
     </Routes>
     </div>
   </>

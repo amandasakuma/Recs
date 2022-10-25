@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-
+import { useNavigate } from "react-router-dom"
 
 export default function ProfileAbout({user, loggedInUser}) {
-
+ let navigate = useNavigate();
 
   const {username, bio, email, profile_pic} = user
 
@@ -16,6 +16,8 @@ export default function ProfileAbout({user, loggedInUser}) {
   const [profileEdits, setProfileEdits] = useState(intitialForm)
   const [showUpdateForm, setShowUpdateForm] = useState(false)
   const token = localStorage.getItem('token')
+
+  if(!user) { return <div></div>}
 
   const handleEdit = (e) => {
         setProfileEdits({
@@ -41,6 +43,7 @@ export default function ProfileAbout({user, loggedInUser}) {
       .then((response) => response.json())
       .then((json) => console.log(json));
       setShowUpdateForm(!showUpdateForm)
+      navigate(`/profile/${user.username}`)
   }
 
   function handleDelete(){
@@ -51,12 +54,12 @@ export default function ProfileAbout({user, loggedInUser}) {
     .then(res => res.json())
     .then(res => console.log(res))
   }
-  if(!user) { return <div></div>}
+
 
   return (
 <>
   {showUpdateForm?
-  <form className="form" onSubmit={handleProfileEdit}>
+  <form className="profile-form" onSubmit={handleProfileEdit}>
 
       <h2>Edit Profile</h2>
       <label htmlFor="username">Username</label>
@@ -95,18 +98,18 @@ export default function ProfileAbout({user, loggedInUser}) {
 
     :
 
-    <div className='about'>
-      <h2>{user.username}</h2>
-      <p>{user.bio}</p>
-      <img src={user.profile_pic} />
-      <p>Followers {user.follower_count}</p>
+    <div className='profile-about'>
+      <h2 className='profile-about'>{user.username}</h2>
+      <p className='profile-about'>{user.bio}</p>
+      {/* <img src={user.profile_pic} /> */}
+      {/* <p>Followers {user.follower_count}</p> */}
     </div>
   }
 
   {loggedInUser.id === user.id ?
   <>
-    <button onClick={handleEditClick} >Edit Profile</button>
-    <button onClick={handleDelete} >Delete Profile</button> 
+    <button className="edit-profile-button" onClick={handleEditClick} >Edit Profile</button>
+    {/* <button onClick={handleDelete} >Delete Profile</button>  */}
   </>
     : null}
  

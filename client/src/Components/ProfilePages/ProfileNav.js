@@ -7,9 +7,10 @@ import ProfileCardEditor from './ProfileCardEditor'
 
 export default function ProfileNav({user, loggedInUser}) {
     const token = localStorage.getItem('token')
-    const follows = loggedInUser.following.find(element => {
-        return element.id === user.id
-    })
+
+
+    if(!loggedInUser) { return <div></div>}
+ 
 
     function handleFollow(){
         fetch('/create-follow', {
@@ -27,6 +28,9 @@ export default function ProfileNav({user, loggedInUser}) {
             }
         })
     }
+   const follows = loggedInUser.following.find(element => {
+        return element.id === user.id
+    })
 
     function handleUnFollow(){
         fetch('/unfollow', {
@@ -49,13 +53,12 @@ export default function ProfileNav({user, loggedInUser}) {
         <span>Followers {user.follower_count}</span>
         <span>|</span>
         <span>Following {user.following_count}</span>
-        {follows ? 
-            <button onClick={handleUnFollow}>Yes</button>
-                :
-            <button onClick={handleFollow} >Follow</button>
-        }
     </div>    
-    
+            {follows ? 
+            <button className="follow-button" onClick={handleUnFollow}>Yes</button>
+                :
+            <button className="follow-button" onClick={handleFollow} >Follow</button>
+        }
       <nav className='profile-nav'>
           <Link to={`/profile/${user.username}/posts`}>Posts</Link>
           <Link to={`/profile/${user.username}/about`}>About</Link>

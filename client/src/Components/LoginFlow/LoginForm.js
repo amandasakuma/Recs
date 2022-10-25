@@ -37,24 +37,26 @@ export default function LoginForm({user, setUser}) {
   }
 
   return (
-   <form className="form" onSubmit = {handleLogin}>
+   <form className="login-form" onSubmit = {handleLogin}>
       {/* <img className="login-logo" src={logo} /> */}
       <h2>Recs</h2>
-      <label htmlFor="username">Username</label>
+      {/* <label htmlFor="username">Username</label> */}
       <input
         type="text"
         name="username"
+        placeholder='Username'
         value={formData.username}
         onChange={handleChange}
       />
-      <label htmlFor="password">Password</label>
+      {/* <label htmlFor="password">Password</label> */}
       <input
         type="password"
         name="password"
+        placeholder='Password'
         value={formData.password}
         onChange={handleChange}
       />
-      <button type="submit">Login</button>
+      <button type="submit">LOGIN</button>
     </form>
   )
 }
