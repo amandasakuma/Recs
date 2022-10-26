@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import {  NavLink, useParams } from "react-router-dom"
+import {  NavLink, useParams, Link } from "react-router-dom"
 import logo from './logo.png'
 // import { Dropdown, Image } from 'semantic-ui-react'
 
@@ -52,7 +52,34 @@ console.log(user)
                 </DropdownMenu>
             </div>
             }
-        </nav>         
+   
+        </nav>   
+     <div className='tag-container'>
+          <span>Top tags:</span>
+    
+           <NavLink to="tags/food"  
+              style={({ isActive }) => ({
+    color: isActive ? '#ffffff' : '#545e6f',
+    background: isActive ? '#95a4ff' : null,
+  })}
+                >
+               <span>#Food/Dining</span>
+            </NavLink>
+            <NavLink to="tags/experiences"                     style={({ isActive }) => ({
+                color: isActive ? '#ffffff' : '#545e6f',
+                background: isActive ? '#95a4ff' : null,
+                })}>
+               <span>#Experiences</span>
+            </NavLink>
+            <NavLink to="tags/products"               
+                style={({ isActive }) => ({
+                color: isActive ? '#ffffff' : '#545e6f',
+                background: isActive ? '#95a4ff' : null,
+            })} >
+               <span>#Products</span>
+            </NavLink>
+           
+        </div>      
    </Fragment>    
   )
 }

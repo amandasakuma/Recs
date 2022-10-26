@@ -11,23 +11,23 @@ export default function Homepage({posts, onLike, loggedInUser, postTags}) {
 })
   return (
 <>
-        <div className='tag-container'>
-          <ul>Top tags:</ul>
+        {/* <div className='tag-container'>
+          <span>Top tags:</span>
     
            <Link to="tags/food"  >
-               <li>Food/Dining</li>
+               <span>#Food/Dining</span>
             </Link>
             <Link to="tags/experiences"  >
-               <li>Experiences</li>
+               <span>#Experiences</span>
             </Link>
             <Link to="tags/products"  >
-               <li>Products</li>
+               <span>#Products</span>
             </Link>
            
-        </div>
+        </div> */}
 
     <div className='rec-card-container'>
-        <p>Today's top reccomendations:</p>
+        {/* <p>Today's top reccomendations:</p> */}
         {posts.map((post) => 
         <RecCard key={post.id} loggedInUser={loggedInUser} onLike= {onLike} post={post}/>)}
   {/* <Routes>

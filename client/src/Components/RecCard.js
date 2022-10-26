@@ -56,7 +56,7 @@ export default function RecCard({post, loggedInUser, onLike}) {
             : null
             }
             <span>{pretty_time}</span>
-            <span>#{tags}</span>  
+            {/* <span>#{tags}</span>   */}
       
         </div>
     </div>

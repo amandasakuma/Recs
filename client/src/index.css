@@ -17,22 +17,26 @@ code {
 }
 
 .rec-card-container {
-  width: calc(60% - 120px);;
+  /* width: calc(60% - 120px);; */
   max-width: 600px;
-  /* margin: 0 auto; */
-  margin-left: 30%;
-  display: inline-block
+  margin: 0 auto;
+  /* margin-left: 30%; */
+  /* display: inline-block */
 }
 
 .tag-container {
-  float: right;
-  margin-top: 75px;
-   border: 2px solid;
   padding: 10px;
-  width: calc(30% - 120px);
+
+  display: flex;
+  width: 70%;
   position: relative;
-  /* display: inline-block; */
+  margin: 0 auto;
   /* margin-left: 60%; */
+  justify-content: space-evenly;
+}
+
+.tag-container span:hover{
+  border-bottom: 5px solid #ffa580
 }
 
 .rec-card {
@@ -221,7 +225,7 @@ code {
     border: 1px solid rgba(0,0,0,1)
 }
 
-.login-form button:selection{
+.login-form button::selection{
   background-color: #ffc8ff;
 }
 
@@ -268,7 +272,8 @@ code {
 
 
 .profile-header {
-  /* background-image: url("https://img.freepik.com/free-vector/yellow-background-with-halftone-lines-design_1017-30148.jpg?w=2000"); */
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg");
+  background-size: 100% 100%;
   position: absolute;
   height: 300px;
   width: 100%;
