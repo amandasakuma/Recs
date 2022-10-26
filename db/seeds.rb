@@ -35,7 +35,7 @@ puts "seeding social interactions"
     }
 
 puts "seeding follows"
-20.times {Follow.create!(
+10.times {Follow.create!(
     follower_id: User.all.sample.id,
     followed_id: User.all.sample.id
     )
