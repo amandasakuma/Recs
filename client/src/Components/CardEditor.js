@@ -9,7 +9,8 @@ export default function CardEditor({user}) {
     draft: true,
     pub_date: "",
     user_id: "",
-    link: ""
+    link: "",
+    tags: ""
   }
     // const ref = useRef(null);
   // let navigate = useNavigate();
@@ -77,6 +78,14 @@ export default function CardEditor({user}) {
                 value={newPost.link} 
                 onChange={handlePostChange} 
             />
+
+              <input 
+                type='text' 
+                name='tag' 
+                placeholder='tag'
+                value={newPost.tag} 
+                onChange={handlePostChange} 
+              />
         <button type="submit" onSubmit={handlePublish}>Publish</button>
       </form>
     </div>

@@ -12,12 +12,15 @@ Rails.application.routes.draw do
     end
 
     resources :profiles
+    resources :tags, only: [:index, :create]
 
     get "/me", to: "users#my_profile"
     get '/showprofiles/:username', to: "profiles#profile_page"
 
     get "/likes", to: "likes#index"
     get "/follows", to: "follows#index"
+
+    get "/tags/food-dining", to: "tags#food"
 
     post "/signup", to: "users#create"
     post "/login", to: "users#login"
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
     delete "/unfollow", to: "follows#destroy"
   
     get '/posts', to: "posts#show"
-
+    get '/post-tags/food', to: "posts#food_posts"
 
 
     post '/showlikes', to: 'posts#like', as: 'like'

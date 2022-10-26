@@ -6,7 +6,7 @@ import Microlink from '@microlink/react'
 export default function RecCard({post, loggedInUser, onLike}) {
 
   const token = localStorage.getItem('token')
-  const {hed, dek, pretty_time, content, like_count, user, link} = post
+  const {hed, dek, pretty_time, content, like_count, user, link, tags} = post
 
     const liked = post.likes.find(element => {
       return element.user_id === loggedInUser.id
@@ -29,23 +29,8 @@ export default function RecCard({post, loggedInUser, onLike}) {
       })
       .then(onLike)
     }
-  useEffect(onLike, [])
-    //   .then((res) => {
-    //   if (res.ok){
-    //     res.json()
-    //   .then((data) => console.log('success:', data))
-    //   if(data){
-    //       setLikes(data)
-    //     }
-    //   }
-    // })
-      // .then((setLikes((likes) => likes +1)));
-  
 
 
-  // const handleLikeClick = () => {
-  //   setClaps((likes) => likes + 1);
-  // }
 
   return (
     <div className='rec-card'>
@@ -61,7 +46,7 @@ export default function RecCard({post, loggedInUser, onLike}) {
             <h2 id="card-hed">{hed}</h2>
      
             <p>{dek}</p>
-            <Link to={`/profile/${user.username}`}>
+            <Link to={`/profile/${user.username}/posts`}>
               <img className="avatar" src={user.profile_pic} />
               <span>{user.username}</span>
             </Link>
@@ -70,7 +55,8 @@ export default function RecCard({post, loggedInUser, onLike}) {
             <Microlink url={link} size='large'/>
             : null
             }
-            <span>{pretty_time}</span>  
+            <span>{pretty_time}</span>
+            <span>#{tags}</span>  
       
         </div>
     </div>

@@ -7,7 +7,7 @@ puts "seeding"
 
 puts "seeding users"
 20.times {User.create!(
-    username: Faker::Internet.username, 
+    username: Faker::Name.first_name, 
     email: Faker::Internet.email,
     password: "1234",
     bio: "I'm a cool person",
@@ -24,7 +24,8 @@ puts "seeding posts"
     draft: true,
     pub_date: Faker::Time.forward(days: 5),
     link: "",
-    photo: ""
+    photo: "",
+    tags: ""
     )
 }
 

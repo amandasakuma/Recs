@@ -17,14 +17,26 @@ code {
 }
 
 .rec-card-container {
-  width: 100%;
+  width: calc(60% - 120px);;
   max-width: 600px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-left: 30%;
+  display: inline-block
+}
+
+.tag-container {
+  float: right;
+  margin-top: 75px;
+   border: 2px solid;
+  padding: 10px;
+  width: calc(30% - 120px);
+  position: relative;
+  /* display: inline-block; */
+  /* margin-left: 60%; */
 }
 
 .rec-card {
 	border-spacing: 0;
-	border: .5px solid gray;
   width: calc(100% - 70px);
   display: block;
   position: relative;

@@ -3,14 +3,15 @@ import {Link } from "react-router-dom"
 import Microlink from '@microlink/react'
 
 export default function ProfileCard({post, user, loggedInUser}) {
-  const {hed, dek, pretty_time, content, like_count, id, link} = post
+  const {hed, dek, pretty_time, content, like_count, id, link, tags} = post
 
 
   let initialPost = {
     hed: hed,
     dek: dek,
     content: content,
-    link: link
+    link: link,
+    tags: tags
   }
 
   const [postEdits, setPostEdits] = useState(initialPost)
@@ -96,6 +97,14 @@ export default function ProfileCard({post, user, loggedInUser}) {
                 name='link' 
                 placeholder='link'
                 defaultValue={link} 
+                onChange={handleEdit} 
+            />
+
+              <input 
+                type='text' 
+                name='tags' 
+                placeholder='tags'
+                defaultValue={tags} 
                 onChange={handleEdit} 
             />
 

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    skip_before_action :authorized, only: [:index, :show, :create]
+    skip_before_action :authorized, only: [:index, :show, :create, :food_posts]
 
 
     def index 
@@ -27,11 +27,15 @@ class PostsController < ApplicationController
         render json: post
     end 
 
+    def food_posts 
+        food_tag = Post.all.where(tags: "food/dining")
+        render json: food_tag
+    end 
 
 private 
 
     def post_params 
-        params.permit(:hed, :dek, :content, :draft, :pub_date, :user_id, :photo, :link)
+        params.permit(:hed, :dek, :content, :draft, :pub_date, :user_id, :photo, :link, :tags)
     end
 
     def find_post

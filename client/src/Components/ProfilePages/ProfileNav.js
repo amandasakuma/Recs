@@ -101,7 +101,7 @@ console.log(follows)
       </nav>   
 <Outlet />
     <Routes>
-        <Route path={`/profile/${user.username}/posts`} element={<ProfilePosts loggedInUser={loggedInUser} user={user}/>}/>
+        <Route path="posts" element={<ProfilePosts loggedInUser={loggedInUser} user={user}/>}/>
         <Route path="about" element={<ProfileAbout user={user} loggedInUser={loggedInUser}/>} />
         {/* <Route path="edit" element={<ProfileCardEditor user={user} loggedInUser={loggedInUser}/>} /> */}
     </Routes>

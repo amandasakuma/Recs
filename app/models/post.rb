@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :tags
+  # has_many :tags
   has_many :likes, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
@@ -15,12 +15,15 @@ class Post < ApplicationRecord
 
   def like_count 
     self.likes.count
- 
   end 
 
   def liked()
       !!self.likes.find{|like|like.user_id == user.id}
   end
+
+  def self.food_tag
+    Post.all.where(tags: "food/dining")
+  end 
 
 
 

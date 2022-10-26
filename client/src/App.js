@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route, useLocation, Link } from "react-router-dom"
 import Homepage from "./Components/Homepage";
 import Header from "./Components/LoginFlow/Header";
 import LoginSignUpPage from "./Components/LoginFlow/LoginSignUpPage";
 import CardEditor from "./Components/CardEditor"
 import Profile from "./Components/ProfilePages/Profile";
 import RecCard from "./Components/RecCard";
+import TagsContainer from "./Components/TagsContainer";
 
 
 
@@ -16,6 +17,7 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState('')
   const [liked, setLiked] = useState(false);
   const token = localStorage.getItem('token')
+  const [filteredPosts, setFilteredPosts] = useState("")
 
 
   useEffect(() => {
@@ -43,6 +45,8 @@ function App() {
   }
   useEffect(getPosts, [])
 
+
+
     let location = useLocation();
 
     useEffect(() => {
@@ -53,6 +57,35 @@ function App() {
     setLiked((liked) => !liked)
   }
 
+
+        // let postTags = posts.filter((post) => {
+        //   if(post.tags === "food/dining"){
+        //     return <Link to="tags/food"  >
+        //             <li>Food/Dining</li>
+        //           </Link>
+        //   } else if (post.tags === "experiences") {
+        //     return <Link to="tags/experiences"  >
+        //             <li>Experiences</li>
+        //           </Link>
+        //   } else if (post.tags === "products") {
+        //     return <Link to="tags/products"  >
+        //             <li>Experiences</li>
+        //           </Link>
+        //   }
+        // })
+  let diningTag = posts.filter((post) => {
+  return post.tags === "food/dining"
+})
+
+let experiencesTag = posts.filter((post) => {
+  return post.tags === "experiences"
+})
+
+let productsTag = posts.filter((post) => {
+  return post.tags === "products"
+})
+
+
   return (
   <>
 
@@ -61,14 +94,38 @@ function App() {
     {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null}
 
     <Routes>
-      <Route path="/" element={<Homepage onLike={onLike} posts={posts} loggedInUser={loggedInUser}/>} >
-      </Route>
-      <Route path=":id" element= {<RecCard/>} />
-      <Route path="/header" element= {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null} />
-      <Route path={"/profile/:username/*"} element={<Profile posts={posts} loggedInUser={loggedInUser}/>} />
-      <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
-      <Route path="/card-editor" element={<CardEditor user={user}/>} />
-   
+      <Route path="/" element={<Homepage onLike={onLike} posts={posts} loggedInUser={loggedInUser}/>} />
+ 
+      <Route path="/tags/experiences" 
+        element=
+          {<TagsContainer 
+            tagFeed={experiencesTag}
+            posts={posts} 
+            loggedInUser={loggedInUser}/>} 
+          /> 
+
+        <Route path="/tags/food" 
+          element={<TagsContainer
+            tagFeed={diningTag}
+            posts={posts} 
+            loggedInUser={loggedInUser}/>} 
+          />
+        <Route path="/tags/products" 
+          element={<TagsContainer
+            tagFeed={productsTag}
+            posts={posts} 
+            loggedInUser={loggedInUser}/>} 
+          />
+
+
+
+
+        <Route path=":id" element= {<RecCard/>} />
+        <Route path="/header" element= {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null} />
+        <Route path={"/profile/:username/*"} element={<Profile posts={posts} loggedInUser={loggedInUser}/>} />
+        <Route path="/login" element={<LoginSignUpPage user={user} setUser={setUser}/>} />
+        <Route path="/card-editor" element={<CardEditor user={user}/>} />
+
     </Routes>
     </div>
   </>
