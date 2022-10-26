@@ -9,16 +9,6 @@ import DropdownMenu from 'react-bootstrap-dropdown-menu/dist/DropdownMenu';
 export default function Header({user, setUser}) {
 console.log(user)
 
-    // const trigger = (
-    //     <span>
-    //         <Image avatar src={user.profile_pic} /> {user.username}
-    //     </span>
-// )
-//     const options = [
-//         { key: 'user', text: 'Account', icon: 'user' },
-//         { key: 'settings', text: 'Settings', icon: 'settings' },
-//         { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
-//         ]
 
     const params = useParams();
     console.log(params)

@@ -3,7 +3,8 @@ import {Link } from "react-router-dom"
 import Microlink from '@microlink/react'
 
 
-export default function RecCard({post, loggedInUser}) {
+export default function RecCard({post, loggedInUser, onLike}) {
+
   const token = localStorage.getItem('token')
   const {hed, dek, pretty_time, content, like_count, user, link} = post
 
@@ -20,14 +21,31 @@ export default function RecCard({post, loggedInUser}) {
       },
       body: JSON.stringify({post_id:post.id, user_id:user.id})
     })
-      .then((res) => {
-      if (res.ok){
-        res.json()
-      .then((data) => console.log('success:', data))
-      }
-    })
-  }
+      .then(res => res.json())
+      .then(data => {
+        console.log('success:', data)
+        if(data){
+        }
+      })
+      .then(onLike)
+    }
+  useEffect(onLike, [])
+    //   .then((res) => {
+    //   if (res.ok){
+    //     res.json()
+    //   .then((data) => console.log('success:', data))
+    //   if(data){
+    //       setLikes(data)
+    //     }
+    //   }
+    // })
+      // .then((setLikes((likes) => likes +1)));
+  
 
+
+  // const handleLikeClick = () => {
+  //   setClaps((likes) => likes + 1);
+  // }
 
   return (
     <div className='rec-card'>
@@ -36,7 +54,7 @@ export default function RecCard({post, loggedInUser}) {
               {liked ? 
                   <button>Co-signed</button>
                   :
-                  <button onClick={handleLike}>Co-sign</button>
+                  <button onClick={handleLike} >Co-sign</button >
                 }
               <p>{like_count}</p>
             </div>  

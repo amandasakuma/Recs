@@ -14,6 +14,7 @@ function App() {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState("")
   const [loggedInUser, setLoggedInUser] = useState('')
+  const [liked, setLiked] = useState(false);
   const token = localStorage.getItem('token')
 
 
@@ -48,6 +49,10 @@ function App() {
         console.log(location.pathname)
     }, [location])
 
+  const onLike = () => {
+    setLiked((liked) => !liked)
+  }
+
   return (
   <>
 
@@ -56,7 +61,7 @@ function App() {
     {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null}
 
     <Routes>
-      <Route path="/" element={<Homepage posts={posts} loggedInUser={loggedInUser}/>} >
+      <Route path="/" element={<Homepage onLike={onLike} posts={posts} loggedInUser={loggedInUser}/>} >
       </Route>
       <Route path=":id" element= {<RecCard/>} />
       <Route path="/header" element= {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null} />
