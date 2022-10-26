@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, Outlet, Routes, Route, } from "react-router-dom"
 import ProfilePosts from './ProfilePosts'
 import ProfileAbout from './ProfileAbout'
@@ -9,8 +9,8 @@ export default function ProfileNav({user, loggedInUser}) {
     const token = localStorage.getItem('token')
 
 
-    if(!loggedInUser) { return <div></div>}
- 
+    if(!user) { return <div></div>}
+
 
     function handleFollow(){
         fetch('/create-follow', {
@@ -28,9 +28,26 @@ export default function ProfileNav({user, loggedInUser}) {
             }
         })
     }
-   const follows = loggedInUser.following.find(element => {
-        return element.id === user.id
+    let follows = () => { 
+            if (loggedInUser = true)
+            loggedInUser.following.find(element => {
+                return element.id === user.id
     })
+    }
+// })
+//    const handleFollows = () => {
+//         if (loggedInUser) {
+//             let follows = loggedInUser.following.find(element => {
+//                 return element.id === user.id
+//             })
+//         } else {
+//             let follows = false         
+//             }}
+
+//     useEffect(() => {
+//         handleFollows
+//     }, [])
+                    
 
     function handleUnFollow(){
         fetch('/unfollow', {
@@ -54,11 +71,18 @@ export default function ProfileNav({user, loggedInUser}) {
         <span>|</span>
         <span>Following {user.following_count}</span>
     </div>    
-            {follows ? 
+        {loggedInUser? 
+            follows
+            :
+            <button className="follow-button" onClick={handleFollow} >Follow</button>
+            }
+ 
+          {follows ? 
             <button className="follow-button" onClick={handleUnFollow}>Yes</button>
                 :
+            
             <button className="follow-button" onClick={handleFollow} >Follow</button>
-        }
+        }  
       <nav className='profile-nav'>
           <Link to={`/profile/${user.username}/posts`}>Posts</Link>
           <Link to={`/profile/${user.username}/about`}>About</Link>

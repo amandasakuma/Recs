@@ -271,8 +271,9 @@ code {
 
 .profile-avatar {
   margin: 120px 0 0 10%;
-  /* border: .5px solid gray; */
-  height: 40%;
+  border: .5px solid gray;
+  height: 100px;
+  width: 100px;
   position: absolute;
   border-radius: 50%;
   overflow: "hidden"
