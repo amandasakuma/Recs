@@ -45,5 +45,7 @@ Rails.application.routes.draw do
   patch "posts/:id", to: "posts#update"
  
   # delete 'profile/users/:id', to: "users#destroy"
+root "posts#index"
+
 
 end
