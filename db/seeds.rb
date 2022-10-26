@@ -22,7 +22,9 @@ puts "seeding posts"
     dek: Faker::Marketing.buzzwords,
     content: Faker::Lorem.paragraph,
     draft: true,
-    pub_date: Faker::Time.forward(days: 5)
+    pub_date: Faker::Time.forward(days: 5),
+    link: "",
+    photo: ""
     )
 }
 

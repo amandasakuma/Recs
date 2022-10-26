@@ -18,6 +18,9 @@ export default function Profile({loggedInUser}) {
             })
             .then((res) => res.json())
             .then((data) => setUser(data))
+            // .then(loggedInUser.following.find(element => {
+            //     return element.id === user.id
+            //     }))
         } else {
             fetch(`/showprofiles/${params.username}`)
                 .then((res) => res.json())
@@ -29,9 +32,10 @@ export default function Profile({loggedInUser}) {
     if(!user) { return <div></div>}
 
 
+    // if(user) {const {following} = user}
   return (
     <div>
-        <ProfileNav loggedInUser={loggedInUser} user={user}/>
+        <ProfileNav loggedInUser={loggedInUser} params={params} user={user}/>
     </div>
   )
 }

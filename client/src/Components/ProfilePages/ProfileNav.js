@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import { Link, Outlet, Routes, Route, } from "react-router-dom"
 import ProfilePosts from './ProfilePosts'
 import ProfileAbout from './ProfileAbout'
-import ProfileCardEditor from './ProfileCardEditor'
+// import ProfileCardEditor from './ProfileCardEditor'
 
 
-export default function ProfileNav({user, loggedInUser}) {
+export default function ProfileNav({user, loggedInUser, params}) {
     const token = localStorage.getItem('token')
-
-
+  
+    console.log(params)
     if(!user) { return <div></div>}
 
 
@@ -28,12 +28,20 @@ export default function ProfileNav({user, loggedInUser}) {
             }
         })
     }
-    let follows = () => { 
-            if (loggedInUser = true)
-            loggedInUser.following.find(element => {
-                return element.id === user.id
+
+    let follows = user.followers.find(element => {
+        return element.id === loggedInUser.id
     })
-    }
+    // let follows = () => { 
+    //         if (loggedInUser = true)
+    //         loggedInUser.following.find(element => {
+    //             return element.id === user.id
+    // })
+    // }
+    // let follows = !!user.following.find(element => {
+    //             return element.id === loggedInUser.id
+    //     })
+console.log(follows)
 // })
 //    const handleFollows = () => {
 //         if (loggedInUser) {
@@ -71,18 +79,21 @@ export default function ProfileNav({user, loggedInUser}) {
         <span>|</span>
         <span>Following {user.following_count}</span>
     </div>    
-        {loggedInUser? 
+        {/* {loggedInUser? 
             follows
             :
             <button className="follow-button" onClick={handleFollow} >Follow</button>
-            }
- 
+            } */}
+
+        {loggedInUser.id !== user.id ?
+            <>
           {follows ? 
-            <button className="follow-button" onClick={handleUnFollow}>Yes</button>
+            <button className="follow-button" onClick={handleUnFollow}>Following</button>
                 :
             
             <button className="follow-button" onClick={handleFollow} >Follow</button>
-        }  
+            }
+            </> : null}
       <nav className='profile-nav'>
           <Link to={`/profile/${user.username}/posts`}>Posts</Link>
           <Link to={`/profile/${user.username}/about`}>About</Link>

@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useParams} from 'react'
 import {Link } from "react-router-dom"
+import Microlink from '@microlink/react'
 
 
 export default function RecCard({post, loggedInUser}) {
   const token = localStorage.getItem('token')
-  const {hed, dek, pretty_time, content, like_count, user} = post
+  const {hed, dek, pretty_time, content, like_count, user, link} = post
 
     const liked = post.likes.find(element => {
       return element.user_id === loggedInUser.id
@@ -47,6 +48,10 @@ export default function RecCard({post, loggedInUser}) {
               <span>{user.username}</span>
             </Link>
             <p id="body" >{content}</p>
+            {link?
+            <Microlink url={link} size='large'/>
+            : null
+            }
             <span>{pretty_time}</span>  
       
         </div>

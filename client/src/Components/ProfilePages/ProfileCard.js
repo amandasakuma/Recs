@@ -3,12 +3,14 @@ import {Link } from "react-router-dom"
 import Microlink from '@microlink/react'
 
 export default function ProfileCard({post, user, loggedInUser}) {
-  const {hed, dek, pretty_time, content, like_count, id} = post
+  const {hed, dek, pretty_time, content, like_count, id, link} = post
+
 
   let initialPost = {
     hed: hed,
     dek: dek,
-    content: content
+    content: content,
+    link: link
   }
 
   const [postEdits, setPostEdits] = useState(initialPost)
@@ -54,13 +56,16 @@ export default function ProfileCard({post, user, loggedInUser}) {
             <span>By: {user.username}</span>
             <span>Published On: {pretty_time}</span>
             <p id="body" >{content}</p>
-            {/* <Microlink url='https://www.yelp.com/biz/boat-bar-brooklyn?osq=boat+bar' size='large'/> */}
-            <button> Like</button>
+              {link?
+            <Microlink url={link} size='large'/>
+            : null
+            }
+            {/* <button> Like</button> */}
             <p>{like_count} likes</p>
             {loggedInUser.id === user.id ?
               <>
-                <button onClick={handleEditClick} >Edit Post</button>
-              <button  >Delete Post</button> 
+                <button className="edit-post-button" onClick={handleEditClick} >Edit Post</button>
+              {/* <button  >Delete Post</button>  */}
               </>
               : null}
         </div>
@@ -86,6 +91,14 @@ export default function ProfileCard({post, user, loggedInUser}) {
               defaultValue={content}
               onChange={handleEdit}
             />
+            <input 
+                type='text' 
+                name='link' 
+                placeholder='link'
+                defaultValue={link} 
+                onChange={handleEdit} 
+            />
+
         <button type="submit" onSubmit={handlePostEdit}>Publish</button>
       </form>
 

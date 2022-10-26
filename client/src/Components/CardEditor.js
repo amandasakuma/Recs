@@ -8,7 +8,8 @@ export default function CardEditor({user}) {
     content: "",
     draft: true,
     pub_date: "",
-    user_id: ""
+    user_id: "",
+    link: ""
   }
     // const ref = useRef(null);
   // let navigate = useNavigate();
@@ -68,6 +69,13 @@ export default function CardEditor({user}) {
               id='card-editor-body'
               value={newPost.content}
               onChange={handlePostChange}
+            />
+              <input 
+                type='text' 
+                name='link' 
+                placeholder='link'
+                value={newPost.link} 
+                onChange={handlePostChange} 
             />
         <button type="submit" onSubmit={handlePublish}>Publish</button>
       </form>

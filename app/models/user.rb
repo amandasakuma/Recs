@@ -25,7 +25,9 @@ class User < ApplicationRecord
         Post.all.where(user_id: self.id)
     end 
 
-
+    # def loggedInFollow
+    #     !!
+    # end
 
     def following_count
         self.following.count
