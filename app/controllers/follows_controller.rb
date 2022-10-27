@@ -26,8 +26,12 @@ class FollowsController < ApplicationController
     # end 
 
     def destroy 
-        @follow = current_user.follows.find(params[:id])
-        @follow.destroy
+        find_follow.destroy
+        head :no_content
+    end 
+private
+    def find_follow
+        Follow.find_by!(id: params[:id])
     end 
 
 

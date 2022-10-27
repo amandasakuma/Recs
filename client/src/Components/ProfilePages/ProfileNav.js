@@ -26,15 +26,15 @@ export default function ProfileNav({user, loggedInUser, params}) {
         })
     }
 
-    // let follows = user.followers.find(element => {
-    //     return element.id === loggedInUser.id
-    // })
-    let follows = () => { 
-            if (loggedInUser = true)
-            loggedInUser.following.find(element => {
-                return element.id === user.id
-        })
-    }
+    let follows = user.followers.find(element => {
+        return element.id === loggedInUser.id
+    })
+    // let follows = () => { 
+    //         if (loggedInUser = true)
+    //         loggedInUser.following.find(element => {
+    //             return element.id === user.id
+    //     })
+    // }
     // let follows = !!user.following.find(element => {
     //             return element.id === loggedInUser.id
     //     })
