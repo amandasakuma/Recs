@@ -18,7 +18,7 @@ code {
 
 .rec-card-container {
   /* width: calc(60% - 120px);; */
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   /* margin-left: 30%; */
   /* display: inline-block */
@@ -27,7 +27,6 @@ code {
 
 .tag-container {
   padding: 10px;
-
   display: flex;
   width: 70%;
   position: relative;

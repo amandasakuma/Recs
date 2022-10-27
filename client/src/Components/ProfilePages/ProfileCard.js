@@ -60,7 +60,25 @@ export default function ProfileCard({post, user, loggedInUser}) {
           navigate('/')
           }
         
-
+  function handleLike(){
+    fetch('/create-like', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json",   
+      },
+      body: JSON.stringify({post_id:post.id, user_id:user.id})
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('success:', data)
+        if(data){
+        }
+      })
+    }
+  //   const liked = post.likes.find(element => {
+  //     return element.user_id === loggedInUser.id
+  // })
 
   return (
     <div className='rec-card'>
@@ -78,8 +96,13 @@ export default function ProfileCard({post, user, loggedInUser}) {
             <Microlink url={link} size='large'/>
             : null
             }
-            {/* <button> Like</button> */}
-            <p>{like_count} likes</p>
+                {/* {liked ? 
+                  <img className="cosign-rex" src="https://cdn-icons-png.flaticon.com/512/1442/1442912.png" />
+                  :
+                     <img onClick={handleLike} className="no-cosign-rex" src="https://cdn-icons-png.flaticon.com/512/1442/1442912.png" />
+                }
+              <p className='like-count'>{like_count}</p>
+            <p>{like_count} likes</p> */}
             {loggedInUser.id === user.id ?
               <>
                 <button className="edit-post-button" onClick={handleEditClick} >Edit Post</button>
