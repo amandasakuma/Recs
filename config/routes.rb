@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :create]
 
     get "/me", to: "users#my_profile"
-    get '/showprofiles/:username', to: "profiles#profile_page"
+    get '/showprofiles/:id', to: "profiles#profile_page"
 
     get "/likes", to: "likes#index"
     get "/follows", to: "follows#index"

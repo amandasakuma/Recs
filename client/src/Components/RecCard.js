@@ -49,7 +49,7 @@ export default function RecCard({post, loggedInUser, onLike, getLikes}) {
             <h2 id="card-hed">{hed}</h2>
      
             <p>{dek}</p>
-            <Link to={`/profile/${user.username}/posts`}>
+            <Link to={`/profile/${user.id}/posts`}>
               <img className="avatar" src={user.profile_pic} />
               <span>{user.username}</span>
             </Link>

@@ -29,9 +29,9 @@ export default function ProfileNav({user, loggedInUser, params}) {
         })
     }
 
-    let follows = user.followers.find(element => {
-        return element.id === loggedInUser.id
-    })
+    // let follows = user.followers.find(element => {
+    //     return element.id === loggedInUser.id
+    // })
     // let follows = () => { 
     //         if (loggedInUser = true)
     //         loggedInUser.following.find(element => {
@@ -41,7 +41,7 @@ export default function ProfileNav({user, loggedInUser, params}) {
     // let follows = !!user.following.find(element => {
     //             return element.id === loggedInUser.id
     //     })
-console.log(follows)
+// console.log(follows)
 // })
 //    const handleFollows = () => {
 //         if (loggedInUser) {
@@ -85,7 +85,7 @@ console.log(follows)
             <button className="follow-button" onClick={handleFollow} >Follow</button>
             } */}
 
-        {loggedInUser.id !== user.id ?
+        {/* {loggedInUser.id !== user.id ?
             <>
           {follows ? 
             <button className="follow-button" onClick={handleUnFollow}>Following</button>
@@ -93,7 +93,7 @@ console.log(follows)
             
             <button className="follow-button" onClick={handleFollow} >Follow</button>
             }
-            </> : null}
+            </> : null} */}
       <nav className='profile-nav'>
           <Link to={`/profile/${user.username}/posts`}>Posts</Link>
           <Link to={`/profile/${user.username}/about`}>About</Link>
