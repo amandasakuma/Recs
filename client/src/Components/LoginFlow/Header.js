@@ -43,11 +43,11 @@ console.log(user)
 
             <div className='menu'>
                 <DropdownMenu userName={user.username} position='left' triggerType='image' trigger={user.profile_pic}>
-                    <MenuItem text="Profile" location={`/profile/${user.username}/posts`}/>
+                    <MenuItem text="Profile" location={`/profile/${user.id}/posts`}/>
                     <MenuItem text="Your Recs" location={`/profile/${user.username}/posts`}/>
                     <MenuItem text="Saved Recs" location="/profile/me/posts"/>
                     <MenuItem type='separator' />
-                    <MenuItem text="Edit Profile" location={`/profile/${user.username}/about`}/>
+                    <MenuItem text="Edit Profile" location={`/profile/${user.id}/about`}/>
                     <MenuItem text="Logout" onClick = {handleLogout} />
                 </DropdownMenu>
             </div>

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get "/me", to: "users#my_profile"
     get '/showprofiles/:id', to: "profiles#profile_page"
 
+    get "/me/following", to: "users#following"
+
     get "/likes", to: "likes#index"
     get "/follows", to: "follows#index"
 

@@ -43,7 +43,7 @@ export default function ProfileAbout({user, loggedInUser}) {
       .then((response) => response.json())
       .then((json) => console.log(json));
       setShowUpdateForm(!showUpdateForm)
-      navigate(`/profile/${user.username}`)
+      navigate(`/profile/${user.id}`)
   }
 
   function handleDelete(){

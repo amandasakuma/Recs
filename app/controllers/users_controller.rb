@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :login, :show, :index]
+    skip_before_action :authorized, only: [:create, :login, :show, :index, :following]
 
 #/signup
     def create 
@@ -61,8 +61,8 @@ class UsersController < ApplicationController
     def following
 
         @user = User.find(params[:id])
-        @users = @user.following
-        render json: @users
+        users = @user.following
+        render json: users
 
     end 
 
