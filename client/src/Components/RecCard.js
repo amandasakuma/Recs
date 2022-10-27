@@ -29,7 +29,6 @@ export default function RecCard({post, loggedInUser, onLike, getLikes}) {
         }
       })
       getLikes(post)
-      // like_count = like_count +1
     }
 
 
@@ -40,9 +39,9 @@ export default function RecCard({post, loggedInUser, onLike, getLikes}) {
         <div className='card-body'>
       <div className='card-cosign'>
               {liked ? 
-                  <img className="cosign-rex" src={logo} />
+                  <img className="cosign-rex" src="https://cdn-icons-png.flaticon.com/512/1442/1442912.png" />
                   :
-                     <img onClick={handleLike} className="no-cosign-rex" src={logo} />
+                     <img onClick={handleLike} className="no-cosign-rex" src="https://cdn-icons-png.flaticon.com/512/1442/1442912.png" />
                 }
               <p>{like_count}</p>
             </div>  

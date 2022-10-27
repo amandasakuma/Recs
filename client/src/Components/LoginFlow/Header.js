@@ -57,12 +57,12 @@ console.log(user)
      <div className='tag-container'>
           <span>Top tags:</span>
 
-             <NavLink to="tags/following"  
+             {/* <NavLink to="tags/following"  
               style={({ isActive }) => ({
                 color: isActive ? '#ffffff' : '#545e6f',
                 background: isActive ? '#95a4ff' : null,
                 })}
-                >#Following</NavLink>
+                >#Following</NavLink> */}
            <NavLink to="tags/food"  
               style={({ isActive }) => ({
                 color: isActive ? '#ffffff' : '#545e6f',

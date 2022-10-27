@@ -1,4 +1,5 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom"
 
 export default function CardEditor({user}) {
 
@@ -14,7 +15,7 @@ export default function CardEditor({user}) {
     tags: ""
   }
     // const ref = useRef(null);
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const [newPost, setNewPost] = useState(initialForm)
 
@@ -45,7 +46,7 @@ export default function CardEditor({user}) {
         }
     });
     setNewPost(initialForm);
-    // navigate('/login-form')
+    navigate('/')
   }
 
 

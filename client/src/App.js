@@ -107,12 +107,12 @@ let productsTag = posts.filter((post) => {
             loggedInUser={loggedInUser}/>} 
           />
 
-          <Route path="/tags/following" 
+          {/* <Route path="/tags/following" 
           element={<TagsContainer
             tagFeed={followFeed}
             posts={posts} 
             loggedInUser={loggedInUser}/>} 
-          />
+          /> */}
 
 
 
