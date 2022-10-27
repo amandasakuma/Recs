@@ -193,6 +193,11 @@ code {
   position: relative;
   margin: 5px 140px 50px 0;
 }
+.profile-posts-container{
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 200px;
+}
 
 .nav-logout {
   /* margin: 0 20px 50px 0; */
@@ -291,17 +296,6 @@ code {
   color: #ffc8ff;
 }
 
-/* .login-page button {
-  display: inline-block;
-  height: 30px;
-  width: 70px;
- -webkit-border-radius: 20px 20px 20px 20px;
-	border-radius: 20px 20px 20px 20px;
-  text-align: center;
-  padding: 5px;
-  font-size: 16px;
-  margin: 20px 10px 10px 10px;
-} */
 
 .profile-nav {
   height: 40px;
@@ -310,7 +304,9 @@ code {
   justify-content: space-evenly;
   padding: 10px 0rem;
   margin-top: 260px;
-  background-color: darkgray;
+  background-color: #95a4ff;
+font-family: 'Fjalla One';
+  font-size: 18px;
 }
 
 .profile-header {

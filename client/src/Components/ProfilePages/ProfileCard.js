@@ -57,7 +57,7 @@ export default function ProfileCard({post, user, loggedInUser}) {
             <p>{dek}</p>
             <span>By: {user.username}</span>
             <span>Published On: {pretty_time}</span>
-            <img src={photo} />
+            <img className="rec-photo" src={photo} />
             <p id="body" >{content}</p>
               {link?
             <Microlink url={link} size='large'/>

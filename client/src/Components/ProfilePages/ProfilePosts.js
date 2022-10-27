@@ -8,7 +8,7 @@ export default function ProfilePosts({user, loggedInUser}) {
 
 
   return (
-    <div>
+    <div className='profile-posts-container'>
       {posts.map((post) => 
         <ProfileCard key={post.id} user={user} post={post} loggedInUser={loggedInUser}/>)}
     </div>
