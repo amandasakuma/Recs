@@ -83,7 +83,7 @@ export default function ProfileCard({post, user, loggedInUser}) {
             {loggedInUser.id === user.id ?
               <>
                 <button className="edit-post-button" onClick={handleEditClick} >Edit Post</button>
-              <button  onClick={handleDelete}>Delete Post</button> 
+              <button  className="delete-post-button" style={{"backgroundColor": "#95a4ff"}} onClick={handleDelete}>Delete Post</button> 
               </>
               : null}
         </div>
