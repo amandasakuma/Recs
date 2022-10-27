@@ -8,17 +8,11 @@ import Profile from "./Components/ProfilePages/Profile";
 import RecCard from "./Components/RecCard";
 import TagsContainer from "./Components/TagsContainer";
 
-
-
-
 function App() {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState("")
   const [loggedInUser, setLoggedInUser] = useState('')
-  const [liked, setLiked] = useState(false);
   const token = localStorage.getItem('token')
-  const [filteredPosts, setFilteredPosts] = useState("")
-  const [followFeed, setFollowFeed] = useState("")
 
 
   useEffect(() => {
@@ -106,17 +100,6 @@ let productsTag = posts.filter((post) => {
             posts={posts} 
             loggedInUser={loggedInUser}/>} 
           />
-
-          {/* <Route path="/tags/following" 
-          element={<TagsContainer
-            tagFeed={followFeed}
-            posts={posts} 
-            loggedInUser={loggedInUser}/>} 
-          /> */}
-
-
-
-
         <Route path=":id" element= {<RecCard/>} />
         <Route path="/header" element= {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null} />
         <Route path={"/profile/:username/*"} element={<Profile posts={posts} loggedInUser={loggedInUser}/>} />

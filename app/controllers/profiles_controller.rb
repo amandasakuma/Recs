@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
 
 
     def profile_page 
-        render json: User.find_by!(id: params[:id])
+        render json: User.find_by!(username: params[:username])
     end 
 
 #profile posts

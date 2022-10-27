@@ -50,6 +50,18 @@ code {
   box-shadow: 10px 10px 1px #ffa580, 10px 10px 1px 2px rgba(0,0,0,1);
 }
 
+.login-logo{
+  height: 70px;
+  margin-top: -40px;
+}
+
+.login-logo-h2 {
+  font-size: 36px;
+  font-family: 'Fjalla One';
+  display: inline-block;
+  
+}
+
 .rec-photo {
   max-width: 90%;
   margin: 10px 0 10px 10px;
@@ -223,7 +235,7 @@ code {
   font-size: 18px;
   font-family: 'Fjalla One';
   display: block;
-  line-height: 28px;
+  line-height: 38px;
   letter-spacing: 1px;
   margin-bottom: 28px;
   border: none;

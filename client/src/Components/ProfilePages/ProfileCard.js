@@ -104,6 +104,14 @@ export default function ProfileCard({post, user, loggedInUser}) {
 
               <input 
                 type='text' 
+                name='photo' 
+                placeholder='photo'
+                defaultValue={photo} 
+                onChange={handleEdit} 
+            />
+
+              <input 
+                type='text' 
                 name='tags' 
                 placeholder='tags'
                 defaultValue={tags} 

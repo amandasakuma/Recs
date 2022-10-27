@@ -14,7 +14,7 @@ export default function CardEditor({user}) {
     photo: "",
     tags: ""
   }
-    // const ref = useRef(null);
+ 
   let navigate = useNavigate();
 
   const [newPost, setNewPost] = useState(initialForm)

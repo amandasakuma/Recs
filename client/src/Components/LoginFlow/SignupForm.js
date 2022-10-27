@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useNavigate} from "react-router-dom"
+import logo from './logo.png'
 
 export default function SignupForm() {
   const intialForm = {
@@ -42,8 +43,8 @@ export default function SignupForm() {
 
   return (
     <form className="login-form" onSubmit={handleSignup}>
-      {/* <img className="login-logo" src={logo} /> */}
-      <h2>Recs</h2>
+      <img className="login-logo" src={logo} />
+      <h2 className="login-logo-h2">Recs</h2>
         {/* <label> Username </label> */}
             <input 
                 type='text' 

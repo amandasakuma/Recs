@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom"
+import logo from './logo.png'
 
 export default function LoginForm({user, setUser}) {
 
@@ -38,9 +39,8 @@ export default function LoginForm({user, setUser}) {
 
   return (
    <form className="login-form" onSubmit = {handleLogin}>
-      {/* <img className="login-logo" src={logo} /> */}
-      <h2>Recs</h2>
-      {/* <label htmlFor="username">Username</label> */}
+      <img className="login-logo" src={logo} />
+      <h2 className='login-logo-h2' >Recs</h2>
       <input
         type="text"
         name="username"
@@ -48,7 +48,6 @@ export default function LoginForm({user, setUser}) {
         value={formData.username}
         onChange={handleChange}
       />
-      {/* <label htmlFor="password">Password</label> */}
       <input
         type="password"
         name="password"

@@ -95,8 +95,8 @@ export default function ProfileNav({user, loggedInUser, params}) {
             }
             </> : null} */}
       <nav className='profile-nav'>
-          <Link to={`/profile/${user.id}/posts`}>Posts</Link>
-          <Link to={`/profile/${user.id}/about`}>About</Link>
+          <Link to={`/profile/${user.username}/posts`}>Posts</Link>
+          <Link to={`/profile/${user.username}/about`}>About</Link>
           
       </nav>   
 <Outlet />
