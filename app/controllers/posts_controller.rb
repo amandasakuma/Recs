@@ -32,6 +32,12 @@ class PostsController < ApplicationController
         render json: food_tag
     end 
 
+    # def following_posts 
+    #     # follow_feed = Post.all.where("user.id =?", @current_user.following.id)
+    #     follow_feed = Post.all.where(self.user.id === @current_user.following.id)
+    #     render json: follow_feed
+    # end 
+
 private 
 
     def post_params 

@@ -10,6 +10,7 @@ export default function CardEditor({user}) {
     pub_date: "",
     user_id: "",
     link: "",
+    photo: "",
     tags: ""
   }
     // const ref = useRef(null);
@@ -78,6 +79,14 @@ export default function CardEditor({user}) {
                 value={newPost.link} 
                 onChange={handlePostChange} 
             />
+
+              <input 
+                type='text' 
+                name='photo' 
+                placeholder='photo'
+                value={newPost.photo} 
+                onChange={handlePostChange} 
+              />
 
               <input 
                 type='text' 

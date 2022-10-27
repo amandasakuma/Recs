@@ -7,7 +7,7 @@ import logo from './LoginFlow/logo.png'
 export default function RecCard({post, loggedInUser, onLike, getLikes}) {
   const [postLikes, setPostLikes] = useState("")
   const token = localStorage.getItem('token')
-  const {hed, dek, pretty_time, content, like_count, user, link, tags} = post
+  const {hed, dek, pretty_time, content, like_count, user, link, photo} = post
 
     const liked = post.likes.find(element => {
       return element.user_id === loggedInUser.id
@@ -53,6 +53,7 @@ export default function RecCard({post, loggedInUser, onLike, getLikes}) {
               <img className="avatar" src={user.profile_pic} />
               <span>{user.username}</span>
             </Link>
+            <img className="rec-photo" src={photo} />
             <p id="body" >{content}</p>
             {link?
             <Microlink url={link} size='large'/>

@@ -3,4 +3,6 @@ class PostSerializer < ActiveModel::Serializer
   belongs_to :user
   has_many :likes
   # has_many :tags
+  # belongs_to :following
+  # belongs_to :followers
 end

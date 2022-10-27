@@ -3,7 +3,7 @@ import {Link } from "react-router-dom"
 import Microlink from '@microlink/react'
 
 export default function ProfileCard({post, user, loggedInUser}) {
-  const {hed, dek, pretty_time, content, like_count, id, link, tags} = post
+  const {hed, dek, pretty_time, content, like_count, id, link, tags, photo} = post
 
 
   let initialPost = {
@@ -11,6 +11,7 @@ export default function ProfileCard({post, user, loggedInUser}) {
     dek: dek,
     content: content,
     link: link,
+    photo: photo,
     tags: tags
   }
 
@@ -56,6 +57,7 @@ export default function ProfileCard({post, user, loggedInUser}) {
             <p>{dek}</p>
             <span>By: {user.username}</span>
             <span>Published On: {pretty_time}</span>
+            <img src={photo} />
             <p id="body" >{content}</p>
               {link?
             <Microlink url={link} size='large'/>

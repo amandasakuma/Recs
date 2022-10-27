@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  # belongs_to :following
+  # belongs_to :followers
   # has_many :tags
   has_many :likes, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
@@ -24,6 +26,8 @@ class Post < ApplicationRecord
   def self.food_tag
     Post.all.where(tags: "food/dining")
   end 
+
+
 
 
 

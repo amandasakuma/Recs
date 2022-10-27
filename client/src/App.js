@@ -18,6 +18,7 @@ function App() {
   const [liked, setLiked] = useState(false);
   const token = localStorage.getItem('token')
   const [filteredPosts, setFilteredPosts] = useState("")
+  const [followFeed, setFollowFeed] = useState("")
 
 
   useEffect(() => {
@@ -54,11 +55,6 @@ function App() {
     setPosts(newArray)
   }
 
-
-  const onLike = () => {
-    setLiked((liked) => !liked)
-  }
-
     let location = useLocation();
 
     useEffect(() => {
@@ -68,8 +64,9 @@ function App() {
 
 
   let diningTag = posts.filter((post) => {
-  return post.tags === "food/dining"
-})
+  return post.tags === "food/dining" 
+}) 
+
 
 let experiencesTag = posts.filter((post) => {
   return post.tags === "experiences"
@@ -79,7 +76,6 @@ let productsTag = posts.filter((post) => {
   return post.tags === "products"
 })
 
-
   return (
   <>
 
@@ -88,7 +84,7 @@ let productsTag = posts.filter((post) => {
     {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null}
 
     <Routes>
-      <Route path="/" element={<Homepage getLikes={getLikes} onLike={onLike} posts={posts} loggedInUser={loggedInUser}/>} />
+      <Route path="/" element={<Homepage getLikes={getLikes} posts={posts} loggedInUser={loggedInUser}/>} />
  
       <Route path="/tags/experiences" 
         element=
@@ -107,6 +103,13 @@ let productsTag = posts.filter((post) => {
         <Route path="/tags/products" 
           element={<TagsContainer
             tagFeed={productsTag}
+            posts={posts} 
+            loggedInUser={loggedInUser}/>} 
+          />
+
+          <Route path="/tags/following" 
+          element={<TagsContainer
+            tagFeed={followFeed}
             posts={posts} 
             loggedInUser={loggedInUser}/>} 
           />
