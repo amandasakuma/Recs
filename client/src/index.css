@@ -64,9 +64,11 @@ code {
 
 .rec-photo {
   max-width: 90%;
+  max-height: 350px; 
   margin: 10px 0 10px 10px;
   display: block;
   position: inherit; 
+  align-items: center;
 }
 .card-cosign{
   margin-bottom: 0;

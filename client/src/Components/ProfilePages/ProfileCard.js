@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Link } from "react-router-dom"
 import Microlink from '@microlink/react'
+import { useNavigate } from "react-router-dom"
 
 export default function ProfileCard({post, user, loggedInUser}) {
   const {hed, dek, pretty_time, content, like_count, id, link, tags, photo} = post
@@ -44,7 +45,21 @@ export default function ProfileCard({post, user, loggedInUser}) {
       .then((json) => console.log(json));
       setShowEditPost(!showEditPost)
   }
+ let navigate = useNavigate();
 
+    function handleDelete(){
+      fetch(`/posts/${id}`, {
+          method: 'DELETE',
+          headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
+      },
+                })
+        .then(res => res.json())
+        .then(res => console.log(res))
+          navigate('/')
+          }
+        
 
 
   return (
@@ -68,7 +83,7 @@ export default function ProfileCard({post, user, loggedInUser}) {
             {loggedInUser.id === user.id ?
               <>
                 <button className="edit-post-button" onClick={handleEditClick} >Edit Post</button>
-              {/* <button  >Delete Post</button>  */}
+              <button  onClick={handleDelete}>Delete Post</button> 
               </>
               : null}
         </div>

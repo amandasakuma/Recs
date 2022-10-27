@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    skip_before_action :authorized, only: [:index, :show, :create, :food_posts]
+    skip_before_action :authorized, only: [:index, :show, :create, :food_posts, :destroy]
 
 
     def index 
@@ -20,6 +20,11 @@ class PostsController < ApplicationController
         @post = Post.all.find(params[:id])
         Like.create(user_id: current_user.id, post_id: @post_id)
     end 
+
+    def destroy
+        find_post.destroy
+        head :no_content
+    end
 
     def update 
         post = Post.find_by(id: params[:id])
