@@ -43,7 +43,7 @@ export default function RecCard({post, loggedInUser, onLike, getLikes}) {
                   :
                      <img onClick={handleLike} className="no-cosign-rex" src="https://cdn-icons-png.flaticon.com/512/1442/1442912.png" />
                 }
-              <p>{like_count}</p>
+              <p className='like-count'>{like_count}</p>
             </div>  
             <h2 id="card-hed">{hed}</h2>
      
@@ -52,13 +52,14 @@ export default function RecCard({post, loggedInUser, onLike, getLikes}) {
               <img className="avatar" src={user.profile_pic} />
               <span>{user.username}</span>
             </Link>
+            <span>{pretty_time}</span>
             <img className="rec-photo" src={photo} />
             <p id="body" >{content}</p>
             {link?
             <Microlink url={link} size='large'/>
             : null
             }
-            <span>{pretty_time}</span>
+           
             {/* <span>#{tags}</span>   */}
       
         </div>

@@ -78,21 +78,26 @@ code {
   border-radius: 50%;
   cursor: pointer;
 }
-.card-cosign p {
-  float: right;
-  /* background-color: #62C2B1; */
-  width: 60%;
-}
+
 
 .cosign-rex{
-  height: 50px;
+  height: 40px;
   border-radius: 50%;
-  background-color:#62C2B1;
+  background-color:#60e1c9;
   float: right
 }
 
+.like-count {
+  float: right;
+  font-size: 12px;
+  font-family: 'Fjalla One';
+  padding-top: 10px;
+  width: 65%;
+  color: rgb(171, 166, 166);
+}
+
 .no-cosign-rex {
-  height: 50px;
+  height: 40px;
   border-radius: 50%;
 }
 
@@ -195,6 +200,7 @@ code {
 }
 .profile-posts-container{
   max-width: 800px;
+  padding-top: 20px;
   margin: 0 auto;
   padding-bottom: 200px;
 }
