@@ -46,6 +46,18 @@ function App() {
   useEffect(getPosts, [])
 
 
+  function getLikes(likedPost){
+    let newArray = [...posts]
+    newArray.map((post) => {
+      return post.id === likedPost.id ? post.like_count = post.like_count +1 : post 
+    })
+    setPosts(newArray)
+  }
+
+
+  const onLike = () => {
+    setLiked((liked) => !liked)
+  }
 
     let location = useLocation();
 
@@ -53,26 +65,8 @@ function App() {
         console.log(location.pathname)
     }, [location])
 
-  const onLike = () => {
-    setLiked((liked) => !liked)
-  }
 
 
-        // let postTags = posts.filter((post) => {
-        //   if(post.tags === "food/dining"){
-        //     return <Link to="tags/food"  >
-        //             <li>Food/Dining</li>
-        //           </Link>
-        //   } else if (post.tags === "experiences") {
-        //     return <Link to="tags/experiences"  >
-        //             <li>Experiences</li>
-        //           </Link>
-        //   } else if (post.tags === "products") {
-        //     return <Link to="tags/products"  >
-        //             <li>Experiences</li>
-        //           </Link>
-        //   }
-        // })
   let diningTag = posts.filter((post) => {
   return post.tags === "food/dining"
 })
@@ -94,7 +88,7 @@ let productsTag = posts.filter((post) => {
     {location.pathname !== '/login' ? <Header user={user} setUser={setUser}/> :null}
 
     <Routes>
-      <Route path="/" element={<Homepage onLike={onLike} posts={posts} loggedInUser={loggedInUser}/>} />
+      <Route path="/" element={<Homepage getLikes={getLikes} onLike={onLike} posts={posts} loggedInUser={loggedInUser}/>} />
  
       <Route path="/tags/experiences" 
         element=

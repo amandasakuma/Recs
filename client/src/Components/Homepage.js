@@ -3,7 +3,7 @@ import RecCard from './RecCard'
 import {Link } from "react-router-dom"
 import TagsContainer from './TagsContainer'
 
-export default function Homepage({posts, onLike, loggedInUser, postTags}) {
+export default function Homepage({posts, onLike, loggedInUser, postTags, getLikes}) {
 
   let tagFeed = posts.filter((post) => {
   return post.tags === "food/dining";
@@ -29,7 +29,7 @@ export default function Homepage({posts, onLike, loggedInUser, postTags}) {
     <div className='rec-card-container'>
         {/* <p>Today's top reccomendations:</p> */}
         {posts.map((post) => 
-        <RecCard key={post.id} loggedInUser={loggedInUser} onLike= {onLike} post={post}/>)}
+        <RecCard key={post.id} getLikes ={getLikes} loggedInUser={loggedInUser} onLike= {onLike} post={post}/>)}
   {/* <Routes>
     <Route path="/posts/:tags" element={<TagsContainer tagFeed={tagFeed} loggedInUser={loggedInUser}/>} />
   </Routes> */}

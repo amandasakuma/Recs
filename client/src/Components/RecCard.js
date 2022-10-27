@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useParams} from 'react'
 import {Link } from "react-router-dom"
 import Microlink from '@microlink/react'
+import logo from './LoginFlow/logo.png'
 
 
-export default function RecCard({post, loggedInUser, onLike}) {
-
+export default function RecCard({post, loggedInUser, onLike, getLikes}) {
+  const [postLikes, setPostLikes] = useState("")
   const token = localStorage.getItem('token')
   const {hed, dek, pretty_time, content, like_count, user, link, tags} = post
 
@@ -27,8 +28,10 @@ export default function RecCard({post, loggedInUser, onLike}) {
         if(data){
         }
       })
-      .then(onLike)
+      getLikes(post)
+      // like_count = like_count +1
     }
+
 
 
 
@@ -37,9 +40,9 @@ export default function RecCard({post, loggedInUser, onLike}) {
         <div className='card-body'>
       <div className='card-cosign'>
               {liked ? 
-                  <button>Co-signed</button>
+                  <img className="cosign-rex" src={logo} />
                   :
-                  <button onClick={handleLike} >Co-sign</button >
+                     <img onClick={handleLike} className="no-cosign-rex" src={logo} />
                 }
               <p>{like_count}</p>
             </div>  
